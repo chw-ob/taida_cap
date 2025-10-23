@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 绘图1.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="11.6929in" height="8.26772in" viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st11">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:none;stroke:#000000;stroke-width:1.5}
+		.st2 {stroke:#000000;stroke-width:1.5}
+		.st3 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
+		.st4 {fill:none;stroke:none;stroke-width:0.25}
+		.st5 {marker-end:url(#mrkr4-47);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st6 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.40983606557377}
+		.st7 {stroke:#000000;stroke-linecap:butt;stroke-width:1.5}
+		.st8 {marker-end:url(#mrkr4-60);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
+		.st9 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.51020408163265}
+		.st10 {fill:#000000;stroke:#000000;stroke-width:0.25}
+		.st11 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-47" class="st6" refX="-4.88" orient="auto" markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-2.44,-2.44) "/>
+		</marker>
+		<marker id="mrkr4-60" class="st9" refX="-3.92" orient="auto" markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-1.96,-1.96) "/>
+		</marker>
+	</defs>
+	<g>
+		<title>页-1</title>
+		<g id="group2-1" transform="translate(164.805,-289.965)">
+			<title>交流电源.104</title>
+			<g id="group3-2" transform="translate(0,-17.8583)">
+				<title>交流电源</title>
+				<g id="shape4-3">
+					<title>工作表.4</title>
+					<ellipse cx="6.8887" cy="588.387" rx="6.8887" ry="6.8887" class="st1"/>
+				</g>
+				<g id="shape5-5" transform="translate(1.10693,-4.69728)">
+					<title>正弦波</title>
+					<path d="M0 593.1 L0 593.06 L0 593.02 L0 592.98 L0.08 592.98 L0.08 592.94 L0.08 592.9 L0.16 592.9 L0.16 592.86
+								 L0.16 592.82 L0.24 592.78 L0.24 592.74 L0.24 592.7 L0.32 592.7 L0.32 592.66 L0.32 592.62 L0.4 592.62
+								 L0.4 592.58 L0.4 592.54 L0.48 592.5 L0.48 592.46 L0.48 592.42 L0.56 592.42 L0.56 592.38 L0.56 592.34
+								 L0.64 592.34 L0.64 592.3 L0.64 592.26 L0.72 592.22 L0.72 592.18 L0.8 592.14 L0.8 592.1 L0.8 592.06
+								 L0.88 592.06 L0.88 592.02 L0.88 591.98 L0.96 591.98 L0.96 591.94 L0.96 591.9 L1.04 591.9 L1.04 591.86
+								 L1.04 591.82 L1.12 591.82 L1.12 591.78 L1.12 591.74 L1.2 591.74 L1.2 591.7 L1.2 591.66 L1.28 591.66
+								 L1.28 591.62 L1.37 591.58 L1.37 591.54 L1.45 591.54 L1.45 591.5 L1.53 591.46 L1.53 591.42 L1.61
+								 591.42 L1.61 591.38 L1.61 591.34 L1.69 591.34 L1.69 591.29 L1.77 591.29 L1.77 591.25 L1.85 591.21
+								 L1.85 591.17 L1.93 591.17 L1.93 591.13 L2.01 591.13 L2.01 591.09 L2.09 591.09 L2.09 591.05 L2.17
+								 591.05 L2.17 591.01 L2.25 591.01 L2.33 590.97 L2.41 590.97 L2.41 590.93 L2.49 590.93 L2.57 590.93
+								 L2.57 590.89 L2.65 590.89 L2.73 590.89 L2.81 590.89 L2.89 590.89 L2.97 590.89 L3.05 590.89 L3.13
+								 590.89 L3.13 590.93 L3.21 590.93 L3.29 590.93 L3.29 590.97 L3.37 590.97 L3.45 591.01 L3.53 591.01
+								 L3.53 591.05 L3.61 591.05 L3.61 591.09 L3.69 591.09 L3.69 591.13 L3.77 591.13 L3.77 591.17 L3.85
+								 591.17 L3.85 591.21 L3.93 591.25 L3.93 591.29 L4.02 591.29 L4.02 591.34 L4.1 591.34 L4.1 591.38
+								 L4.1 591.42 L4.18 591.42 L4.18 591.46 L4.26 591.5 L4.26 591.54 L4.34 591.54 L4.34 591.58 L4.42 591.62
+								 L4.42 591.66 L4.5 591.66 L4.5 591.7 L4.5 591.74 L4.58 591.74 L4.58 591.78 L4.58 591.82 L4.66 591.82
+								 L4.66 591.86 L4.66 591.9 L4.74 591.9 L4.74 591.94 L4.74 591.98 L4.82 591.98 L4.82 592.02 L4.82 592.06
+								 L4.9 592.06 L4.9 592.1 L4.9 592.14 L4.98 592.18 L4.98 592.22 L5.06 592.26 L5.06 592.3 L5.06 592.34
+								 L5.14 592.34 L5.14 592.38 L5.14 592.42 L5.22 592.42 L5.22 592.46 L5.22 592.5 L5.3 592.54 L5.3 592.58
+								 L5.3 592.62 L5.38 592.62 L5.38 592.66 L5.38 592.7 L5.46 592.7 L5.46 592.74 L5.46 592.78 L5.54 592.82
+								 L5.54 592.86 L5.54 592.9 L5.62 592.9 L5.62 592.94 L5.62 592.98 L5.7 592.98 L5.7 593.02 L5.7 593.06
+								 L5.78 593.06 L5.78 593.1 L5.78 593.14 L5.78 593.18 L5.86 593.18 L5.86 593.22 L5.86 593.27 L5.94
+								 593.27 L5.94 593.31 L5.94 593.35 L6.02 593.39 L6.02 593.43 L6.02 593.47 L6.1 593.47 L6.1 593.51
+								 L6.1 593.55 L6.18 593.55 L6.18 593.59 L6.18 593.63 L6.26 593.67 L6.26 593.71 L6.26 593.75 L6.34
+								 593.75 L6.34 593.79 L6.34 593.83 L6.42 593.83 L6.42 593.87 L6.42 593.91 L6.5 593.95 L6.5 593.99
+								 L6.58 594.03 L6.58 594.07 L6.58 594.11 L6.67 594.11 L6.67 594.15 L6.67 594.19 L6.75 594.19 L6.75
+								 594.23 L6.75 594.27 L6.83 594.27 L6.83 594.31 L6.83 594.35 L6.91 594.35 L6.91 594.39 L6.91 594.43
+								 L6.99 594.43 L6.99 594.47 L6.99 594.51 L7.07 594.51 L7.07 594.55 L7.15 594.59 L7.15 594.63 L7.23
+								 594.63 L7.23 594.67 L7.31 594.71 L7.31 594.75 L7.39 594.75 L7.39 594.79 L7.39 594.83 L7.47 594.83
+								 L7.47 594.87 L7.55 594.87 L7.55 594.91 L7.63 594.95 L7.63 594.99 L7.71 594.99 L7.71 595.03 L7.79
+								 595.03 L7.79 595.07 L7.87 595.07 L7.87 595.11 L7.95 595.11 L7.95 595.15 L8.03 595.15 L8.11 595.2
+								 L8.19 595.2 L8.19 595.24 L8.27 595.24 L8.35 595.24 L8.35 595.28 L8.43 595.28 L8.51 595.28 L8.59
+								 595.28 L8.67 595.28 L8.75 595.28 L8.83 595.28 L8.91 595.28 L8.91 595.24 L8.99 595.24 L9.07 595.24
+								 L9.07 595.2 L9.15 595.2 L9.23 595.15 L9.32 595.15 L9.32 595.11 L9.4 595.11 L9.4 595.07 L9.48 595.07
+								 L9.48 595.03 L9.56 595.03 L9.56 594.99 L9.64 594.99 L9.64 594.95 L9.72 594.91 L9.72 594.87 L9.8
+								 594.87 L9.8 594.83 L9.88 594.83 L9.88 594.79 L9.88 594.75 L9.96 594.75 L9.96 594.71 L10.04 594.67
+								 L10.04 594.63 L10.12 594.63 L10.12 594.59 L10.2 594.55 L10.2 594.51 L10.28 594.51 L10.28 594.47
+								 L10.28 594.43 L10.36 594.43 L10.36 594.39 L10.36 594.35 L10.44 594.35 L10.44 594.31 L10.44 594.27
+								 L10.52 594.27 L10.52 594.23 L10.52 594.19 L10.6 594.19 L10.6 594.15 L10.6 594.11 L10.68 594.11 L10.68
+								 594.07 L10.68 594.03 L10.76 593.99 L10.76 593.95 L10.84 593.91 L10.84 593.87 L10.84 593.83 L10.92
+								 593.83 L10.92 593.79 L10.92 593.75 L11 593.75 L11 593.71 L11 593.67 L11.08 593.63 L11.08 593.59
+								 L11.08 593.55 L11.16 593.55 L11.16 593.51 L11.16 593.47 L11.24 593.47 L11.24 593.43 L11.24 593.39
+								 L11.32 593.35 L11.32 593.31 L11.32 593.27 L11.4 593.27 L11.4 593.22 L11.4 593.18 L11.48 593.18 L11.48
+								 593.14 L11.48 593.1 L11.56 593.1" class="st2"/>
+				</g>
+			</g>
+			<g id="shape6-8" transform="translate(-588.387,563.64) rotate(-90)">
+				<title>直流电源.1016</title>
+				<path d="M0 595.28 L17.73 595.28" class="st3"/>
+			</g>
+			<g id="shape7-11" transform="translate(-588.387,595.276) rotate(-90)">
+				<title>直流电源.1017</title>
+				<path d="M0 595.28 L17.73 595.28" class="st3"/>
+			</g>
+		</g>
+		<g id="shape8-14" transform="translate(187.597,-305.646)">
+			<title>工作表.8</title>
+			<rect x="0" y="577.276" width="15.9874" height="18" class="st4"/>
+			<svg viewBox="0 0 624.01 702.17" enable-background="new" color-interpolation-filters="sRGB" height="18"
+					preserveAspectRatio="none" width="15.9874" x="0" y="577.276">
+				<defs>
+					<clipPath id="mfid66">
+						<rect id="mfid67" x="0" y="0" width="624.01" height="702.17"/>
+					</clipPath>
+				</defs>
+				<g clip-path="url(#mfid66)">
+					<mask id="mfid65" fill-rule="evenodd">
+						<g>
+							<rect width="624" height="702" fill="white" stroke="none"/>
+						</g>
+					</mask>
+					<g mask="url(#mfid65)">
+						<g transform="matrix(1.2188, 0, 0, 1.2188, 0, 0)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="222">
+									<text stroke="none" fill="#000000" x="0,111,555" y="0" transform="translate(219,483)"
+											xml:space="preserve">ac</text>
+								</g>
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="384">
+									<text stroke="none" fill="#000000" x="0,768" y="0" transform="translate(52,384)"
+											xml:space="preserve">v</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<mask id="mfid68" fill-rule="evenodd" fill="white" stroke="none">
+						<rect x="0" y="0" width="624" height="702"/>
+					</mask>
+				</g>
+			</svg>
+			<rect x="0" y="577.276" width="15.9874" height="18" class="st4"/>
+		</g>
+		<g id="group16-17" transform="translate(199.559,-343.343)">
+			<title>工作表.16</title>
+			<g id="shape17-18" transform="translate(19.9217,1186.08) rotate(180)">
+				<title>工作表.17</title>
+				<path d="M-0 590.81 A4.98042 4.46751 -180 1 0 9.96 590.81" class="st3"/>
+			</g>
+			<g id="shape18-21">
+				<title>工作表.18</title>
+				<path d="M0 595.28 L9.96 595.28" class="st3"/>
+			</g>
+			<g id="shape19-24" transform="translate(29.8825,1186.08) rotate(180)">
+				<title>工作表.19</title>
+				<path d="M-0 590.81 A4.98042 4.46751 -180 1 0 9.96 590.81" class="st3"/>
+			</g>
+			<g id="shape20-27" transform="translate(39.8434,1186.08) rotate(180)">
+				<title>工作表.20</title>
+				<path d="M-0 590.81 A4.98042 4.46751 -180 1 0 9.96 590.81" class="st3"/>
+			</g>
+			<g id="shape21-30" transform="translate(39.8434,-7.95808E-12)">
+				<title>工作表.21</title>
+				<path d="M0 595.28 L9.96 595.28" class="st3"/>
+			</g>
+		</g>
+		<g id="shape23-33" transform="translate(206.563,847.118) rotate(-179.88)">
+			<title>工作表.23</title>
+			<path d="M0 595.28 L36.03 595.28" class="st3"/>
+		</g>
+		<g id="shape24-36" transform="translate(766.935,263.681) rotate(91.1533)">
+			<title>工作表.24</title>
+			<path d="M0 595.28 L4.25 595.28" class="st3"/>
+		</g>
+		<g id="shape25-39" transform="translate(326.298,900.624) rotate(-179.986)">
+			<title>工作表.25</title>
+			<path d="M0 595.28 L154.75 595.28" class="st3"/>
+		</g>
+		<g id="shape26-42" transform="translate(179.583,-343.491)">
+			<title>箭头</title>
+			<path d="M0 595.28 L6.46 595.28" class="st5"/>
+		</g>
+		<g id="shape27-48" transform="translate(184.252,-347.669)">
+			<title>工作表.27</title>
+			<rect x="0" y="577.276" width="12.9827" height="18" class="st4"/>
+			<svg viewBox="0 0 506.73 702.17" enable-background="new" color-interpolation-filters="sRGB" height="18"
+					preserveAspectRatio="none" width="12.9827" x="0" y="577.276">
+				<defs>
+					<clipPath id="mfid70">
+						<rect id="mfid71" x="0" y="0" width="506.73" height="702.17"/>
+					</clipPath>
+				</defs>
+				<g clip-path="url(#mfid70)">
+					<mask id="mfid69" fill-rule="evenodd">
+						<g>
+							<rect width="507" height="702" fill="white" stroke="none"/>
+						</g>
+					</mask>
+					<g mask="url(#mfid69)">
+						<g transform="matrix(1.2188, 0, 0, 1.2188, 0, 0)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="222">
+									<text stroke="none" fill="#000000" x="0,111,555" y="0" transform="translate(145,483)"
+											xml:space="preserve">ac</text>
+								</g>
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="384">
+									<text stroke="none" fill="#000000" x="0,768" y="0" transform="translate(46,384)"
+											xml:space="preserve">i</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<mask id="mfid72" fill-rule="evenodd" fill="white" stroke="none">
+						<rect x="0" y="0" width="507" height="702"/>
+					</mask>
+				</g>
+			</svg>
+			<rect x="0" y="577.276" width="12.9827" height="18" class="st4"/>
+		</g>
+		<g id="group29-51" transform="translate(263.122,-366.226)">
+			<title>MOS管.1147</title>
+			<g id="shape30-52" transform="translate(603.348,569.705) rotate(90)">
+				<title>工作表.30</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape31-55" transform="translate(16.1455,1173.07) rotate(180)">
+				<title>工作表.31</title>
+				<path d="M0 595.28 L1.68 595.28" class="st8"/>
+			</g>
+			<g id="shape32-61" transform="translate(600.119,572.546) rotate(90)">
+				<title>工作表.32</title>
+				<path d="M0 595.28 L10.49 595.28" class="st3"/>
+			</g>
+			<g id="shape33-64" transform="translate(0,-17.4842)">
+				<title>工作表.33</title>
+				<path d="M0 595.28 L4.84 595.28" class="st3"/>
+			</g>
+			<g id="shape34-67" transform="translate(-579.13,571.847) rotate(-90)">
+				<title>工作表.34</title>
+				<path d="M0 595.28 L11.54 595.28" class="st3"/>
+			</g>
+			<g id="shape35-70" transform="translate(-579.13,595.276) rotate(-90)">
+				<title>工作表.35</title>
+				<path d="M0 595.28 L17.48 595.28" class="st3"/>
+			</g>
+			<g id="shape36-73" transform="translate(16.1455,1180.06) rotate(180)">
+				<title>工作表.36</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape37-76" transform="translate(16.1455,1167.12) rotate(180)">
+				<title>工作表.37</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape38-79" transform="translate(603.348,575.65) rotate(90)">
+				<title>工作表.38</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape39-82" transform="translate(603.348,582.643) rotate(90)">
+				<title>工作表.39</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape40-85" transform="translate(26.2463,1160.13) rotate(180)">
+				<title>工作表.40</title>
+				<path d="M0 595.28 L10.1 595.28" class="st3"/>
+			</g>
+			<g id="shape41-88" transform="translate(32.1995,1185.87) rotate(179.428)">
+				<title>工作表.41</title>
+				<path d="M0 595.28 L10.11 595.28" class="st3"/>
+			</g>
+			<g id="group42-91" transform="translate(21.5273,-4.5459)">
+				<title>工作表.42</title>
+				<g id="shape43-92" transform="translate(0,-16.5517)">
+					<title>工作表.43</title>
+					<path d="M0 595.28 L9.45 595.28" class="st3"/>
+				</g>
+				<g id="shape44-95" transform="translate(0,-8.50535)">
+					<title>工作表.44</title>
+					<path d="M4.73 587.12 L0 595.28 L9.45 595.28 L4.73 587.12 Z" class="st1"/>
+				</g>
+				<g id="shape45-97" transform="translate(600.002,569.399) rotate(90)">
+					<title>工作表.45</title>
+					<path d="M0 595.28 L25.88 595.28" class="st3"/>
+				</g>
+			</g>
+		</g>
+		<g id="group48-100" transform="translate(310.297,-366.226)">
+			<title>MOS管.48</title>
+			<g id="shape49-101" transform="translate(603.348,569.705) rotate(90)">
+				<title>工作表.49</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape50-104" transform="translate(16.1455,1173.07) rotate(180)">
+				<title>工作表.50</title>
+				<path d="M0 595.28 L1.68 595.28" class="st8"/>
+			</g>
+			<g id="shape51-109" transform="translate(600.119,572.546) rotate(90)">
+				<title>工作表.51</title>
+				<path d="M0 595.28 L10.49 595.28" class="st3"/>
+			</g>
+			<g id="shape52-112" transform="translate(0,-17.4842)">
+				<title>工作表.52</title>
+				<path d="M0 595.28 L4.84 595.28" class="st3"/>
+			</g>
+			<g id="shape53-115" transform="translate(-579.13,571.847) rotate(-90)">
+				<title>工作表.53</title>
+				<path d="M0 595.28 L11.54 595.28" class="st3"/>
+			</g>
+			<g id="shape54-118" transform="translate(-579.13,595.276) rotate(-90)">
+				<title>工作表.54</title>
+				<path d="M0 595.28 L17.48 595.28" class="st3"/>
+			</g>
+			<g id="shape55-121" transform="translate(16.1455,1180.06) rotate(180)">
+				<title>工作表.55</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape56-124" transform="translate(16.1455,1167.12) rotate(180)">
+				<title>工作表.56</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape57-127" transform="translate(603.348,575.65) rotate(90)">
+				<title>工作表.57</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape58-130" transform="translate(603.348,582.643) rotate(90)">
+				<title>工作表.58</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape59-133" transform="translate(26.2463,1160.13) rotate(180)">
+				<title>工作表.59</title>
+				<path d="M0 595.28 L10.1 595.28" class="st3"/>
+			</g>
+			<g id="shape60-136" transform="translate(32.1995,1185.87) rotate(179.428)">
+				<title>工作表.60</title>
+				<path d="M0 595.28 L10.11 595.28" class="st3"/>
+			</g>
+			<g id="group61-139" transform="translate(21.5273,-4.5459)">
+				<title>工作表.61</title>
+				<g id="shape62-140" transform="translate(0,-16.5517)">
+					<title>工作表.62</title>
+					<path d="M0 595.28 L9.45 595.28" class="st3"/>
+				</g>
+				<g id="shape63-143" transform="translate(0,-8.50535)">
+					<title>工作表.63</title>
+					<path d="M4.73 587.12 L0 595.28 L9.45 595.28 L4.73 587.12 Z" class="st1"/>
+				</g>
+				<g id="shape64-145" transform="translate(600.002,569.399) rotate(90)">
+					<title>工作表.64</title>
+					<path d="M0 595.28 L25.88 595.28" class="st3"/>
+				</g>
+			</g>
+		</g>
+		<g id="group67-148" transform="translate(263.122,-240.945)">
+			<title>MOS管.67</title>
+			<g id="shape68-149" transform="translate(603.348,569.705) rotate(90)">
+				<title>工作表.68</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape69-152" transform="translate(16.1455,1173.07) rotate(180)">
+				<title>工作表.69</title>
+				<path d="M0 595.28 L1.68 595.28" class="st8"/>
+			</g>
+			<g id="shape70-157" transform="translate(600.119,572.546) rotate(90)">
+				<title>工作表.70</title>
+				<path d="M0 595.28 L10.49 595.28" class="st3"/>
+			</g>
+			<g id="shape71-160" transform="translate(0,-17.4842)">
+				<title>工作表.71</title>
+				<path d="M0 595.28 L4.84 595.28" class="st3"/>
+			</g>
+			<g id="shape72-163" transform="translate(-579.13,571.847) rotate(-90)">
+				<title>工作表.72</title>
+				<path d="M0 595.28 L11.54 595.28" class="st3"/>
+			</g>
+			<g id="shape73-166" transform="translate(-579.13,595.276) rotate(-90)">
+				<title>工作表.73</title>
+				<path d="M0 595.28 L17.48 595.28" class="st3"/>
+			</g>
+			<g id="shape74-169" transform="translate(16.1455,1180.06) rotate(180)">
+				<title>工作表.74</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape75-172" transform="translate(16.1455,1167.12) rotate(180)">
+				<title>工作表.75</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape76-175" transform="translate(603.348,575.65) rotate(90)">
+				<title>工作表.76</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape77-178" transform="translate(603.348,582.643) rotate(90)">
+				<title>工作表.77</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape78-181" transform="translate(26.2463,1160.13) rotate(180)">
+				<title>工作表.78</title>
+				<path d="M0 595.28 L10.1 595.28" class="st3"/>
+			</g>
+			<g id="shape79-184" transform="translate(32.1995,1185.87) rotate(179.428)">
+				<title>工作表.79</title>
+				<path d="M0 595.28 L10.11 595.28" class="st3"/>
+			</g>
+			<g id="group80-187" transform="translate(21.5273,-4.5459)">
+				<title>工作表.80</title>
+				<g id="shape81-188" transform="translate(0,-16.5517)">
+					<title>工作表.81</title>
+					<path d="M0 595.28 L9.45 595.28" class="st3"/>
+				</g>
+				<g id="shape82-191" transform="translate(0,-8.50535)">
+					<title>工作表.82</title>
+					<path d="M4.73 587.12 L0 595.28 L9.45 595.28 L4.73 587.12 Z" class="st1"/>
+				</g>
+				<g id="shape83-193" transform="translate(600.002,569.399) rotate(90)">
+					<title>工作表.83</title>
+					<path d="M0 595.28 L25.88 595.28" class="st3"/>
+				</g>
+			</g>
+		</g>
+		<g id="group86-196" transform="translate(310.297,-240.945)">
+			<title>MOS管.86</title>
+			<g id="shape87-197" transform="translate(603.348,569.705) rotate(90)">
+				<title>工作表.87</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape88-200" transform="translate(16.1455,1173.07) rotate(180)">
+				<title>工作表.88</title>
+				<path d="M0 595.28 L1.68 595.28" class="st8"/>
+			</g>
+			<g id="shape89-205" transform="translate(600.119,572.546) rotate(90)">
+				<title>工作表.89</title>
+				<path d="M0 595.28 L10.49 595.28" class="st3"/>
+			</g>
+			<g id="shape90-208" transform="translate(0,-17.4842)">
+				<title>工作表.90</title>
+				<path d="M0 595.28 L4.84 595.28" class="st3"/>
+			</g>
+			<g id="shape91-211" transform="translate(-579.13,571.847) rotate(-90)">
+				<title>工作表.91</title>
+				<path d="M0 595.28 L11.54 595.28" class="st3"/>
+			</g>
+			<g id="shape92-214" transform="translate(-579.13,595.276) rotate(-90)">
+				<title>工作表.92</title>
+				<path d="M0 595.28 L17.48 595.28" class="st3"/>
+			</g>
+			<g id="shape93-217" transform="translate(16.1455,1180.06) rotate(180)">
+				<title>工作表.93</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape94-220" transform="translate(16.1455,1167.12) rotate(180)">
+				<title>工作表.94</title>
+				<path d="M0 595.28 L8.07 595.28" class="st3"/>
+			</g>
+			<g id="shape95-223" transform="translate(603.348,575.65) rotate(90)">
+				<title>工作表.95</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape96-226" transform="translate(603.348,582.643) rotate(90)">
+				<title>工作表.96</title>
+				<path d="M0 595.28 L4.28 595.28" class="st7"/>
+			</g>
+			<g id="shape97-229" transform="translate(26.2463,1160.13) rotate(180)">
+				<title>工作表.97</title>
+				<path d="M0 595.28 L10.1 595.28" class="st3"/>
+			</g>
+			<g id="shape98-232" transform="translate(32.1995,1185.87) rotate(179.428)">
+				<title>工作表.98</title>
+				<path d="M0 595.28 L10.11 595.28" class="st3"/>
+			</g>
+			<g id="group99-235" transform="translate(21.5273,-4.5459)">
+				<title>工作表.99</title>
+				<g id="shape100-236" transform="translate(0,-16.5517)">
+					<title>工作表.100</title>
+					<path d="M0 595.28 L9.45 595.28" class="st3"/>
+				</g>
+				<g id="shape101-239" transform="translate(0,-8.50535)">
+					<title>工作表.101</title>
+					<path d="M4.73 587.12 L0 595.28 L9.45 595.28 L4.73 587.12 Z" class="st1"/>
+				</g>
+				<g id="shape102-241" transform="translate(600.002,569.399) rotate(90)">
+					<title>工作表.102</title>
+					<path d="M0 595.28 L25.88 595.28" class="st3"/>
+				</g>
+			</g>
+		</g>
+		<g id="shape104-244" transform="translate(-316.008,318.898) rotate(-90)">
+			<title>工作表.104</title>
+			<path d="M0 595.28 L89.85 595.28" class="st3"/>
+		</g>
+		<g id="shape105-247" transform="translate(-268.833,319.362) rotate(-90)">
+			<title>工作表.105</title>
+			<path d="M0 595.28 L91.33 595.28" class="st3"/>
+		</g>
+		<g id="shape106-250" transform="translate(277.973,847.274) rotate(-179.875)">
+			<title>工作表.106</title>
+			<path d="M0 595.28 L31.24 595.28" class="st3"/>
+		</g>
+		<g id="shape107-253" transform="translate(276.661,-340.669)">
+			<title>连接点</title>
+			<path d="M0 592.67 A2.60633 2.60633 0 0 1 5.21 592.67 A2.60633 2.60633 0 1 1 0 592.67 Z" class="st10"/>
+		</g>
+		<g id="shape108-255" transform="translate(323.837,-287.321)">
+			<title>连接点.108</title>
+			<path d="M0 592.67 A2.60633 2.60633 0 0 1 5.21 592.67 A2.60633 2.60633 0 1 1 0 592.67 Z" class="st10"/>
+		</g>
+		<g id="shape109-257" transform="translate(279.162,-416.085)">
+			<title>工作表.109</title>
+			<path d="M0 595.28 L102.1 595.28" class="st3"/>
+		</g>
+		<g id="shape110-260" transform="translate(279.373,-226.853)">
+			<title>工作表.110</title>
+			<path d="M0 595.28 L101.79 595.28" class="st3"/>
+		</g>
+		<g id="shape111-263" transform="translate(-315.994,198.497) rotate(-90.3966)">
+			<title>工作表.111</title>
+			<path d="M0 595.28 L15.23 595.28" class="st3"/>
+		</g>
+		<g id="shape112-266" transform="translate(-268.792,201.13) rotate(-90.6696)">
+			<title>工作表.112</title>
+			<path d="M0 595.28 L14.98 595.28" class="st3"/>
+		</g>
+		<g id="shape113-269" transform="translate(-315.889,372.544) rotate(-90.3966)">
+			<title>工作表.113</title>
+			<path d="M0 595.28 L15.23 595.28" class="st3"/>
+		</g>
+		<g id="shape114-272" transform="translate(-268.708,372.891) rotate(-90.426)">
+			<title>工作表.114</title>
+			<path d="M0 595.28 L14.57 595.28" class="st3"/>
+		</g>
+		<g id="group115-275" transform="translate(-221.507,298.273) rotate(-90)">
+			<title>电容</title>
+			<g id="group116-276" transform="translate(595.276,576.458) rotate(90)">
+				<title>工作表.116</title>
+				<g id="shape117-277" transform="translate(0,-13.8783)">
+					<title>工作表.117</title>
+					<path d="M0 595.28 L18.82 595.28" class="st3"/>
+				</g>
+				<g id="shape118-280" transform="translate(604.685,581.397) rotate(90)">
+					<title>工作表.118</title>
+					<path d="M0 595.28 L13.88 595.28" class="st3"/>
+				</g>
+			</g>
+			<g id="group119-283" transform="translate(-559.99,595.276) rotate(-90)">
+				<title>工作表.119</title>
+				<g id="shape120-284" transform="translate(1.35891E-13,-13.8783)">
+					<title>工作表.120</title>
+					<path d="M0 595.28 L18.82 595.28" class="st3"/>
+				</g>
+				<g id="shape121-287" transform="translate(604.685,581.397) rotate(90)">
+					<title>工作表.121</title>
+					<path d="M0 595.28 L13.88 595.28" class="st3"/>
+				</g>
+			</g>
+		</g>
+		<g id="shape122-290" transform="translate(959.527,178.426) rotate(89.9264)">
+			<title>工作表.122</title>
+			<path d="M0 595.28 L83.8 595.28" class="st3"/>
+		</g>
+		<g id="shape123-293" transform="translate(959.634,299.185) rotate(90.0878)">
+			<title>工作表.123</title>
+			<path d="M0 595.28 L70.23 595.28" class="st3"/>
+		</g>
+		<g id="shape124-296" transform="translate(366.236,-416.085)">
+			<title>箭头.124</title>
+			<path d="M0 595.28 L6.46 595.28" class="st5"/>
+		</g>
+		<g id="shape125-301" transform="translate(379.772,-305.646)">
+			<title>工作表.125</title>
+			<rect x="0" y="577.276" width="19.9843" height="18" class="st4"/>
+			<svg viewBox="0 0 702.56 632.44" enable-background="new" color-interpolation-filters="sRGB" height="18"
+					preserveAspectRatio="none" width="19.9843" x="0" y="577.276">
+				<defs>
+					<clipPath id="mfid74">
+						<rect id="mfid75" x="0" y="0" width="702.56" height="632.44"/>
+					</clipPath>
+				</defs>
+				<g clip-path="url(#mfid74)">
+					<mask id="mfid73" fill-rule="evenodd">
+						<g>
+							<rect width="703" height="632" fill="white" stroke="none"/>
+						</g>
+					</mask>
+					<g mask="url(#mfid73)">
+						<g transform="matrix(1.0984, 0, 0, 1.0972, 0, 0)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="222">
+									<text stroke="none" fill="#000000" x="0,159,603" y="0" transform="translate(250,483)"
+											xml:space="preserve">DC</text>
+								</g>
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="384">
+									<text stroke="none" fill="#000000" x="0,768" y="0" transform="translate(22,384)"
+											xml:space="preserve">V</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<mask id="mfid76" fill-rule="evenodd" fill="white" stroke="none">
+						<rect x="0" y="0" width="703" height="632"/>
+					</mask>
+				</g>
+			</svg>
+			<rect x="0" y="577.276" width="19.9843" height="18" class="st4"/>
+		</g>
+		<g id="shape126-304" transform="translate(366.094,-416.197)">
+			<title>工作表.126</title>
+			<rect x="0" y="577.276" width="18.9921" height="18" class="st4"/>
+			<svg viewBox="0 0 702.56 665.49" enable-background="new" color-interpolation-filters="sRGB" height="18"
+					preserveAspectRatio="none" width="18.9921" x="0" y="577.276">
+				<defs>
+					<clipPath id="mfid78">
+						<rect id="mfid79" x="0" y="0" width="702.56" height="665.49"/>
+					</clipPath>
+				</defs>
+				<g clip-path="url(#mfid78)">
+					<mask id="mfid77" fill-rule="evenodd">
+						<g>
+							<rect width="703" height="665" fill="white" stroke="none"/>
+						</g>
+					</mask>
+					<g mask="url(#mfid77)">
+						<g transform="matrix(1.1562, 0, 0, 1.1545, 0, 0)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="222">
+									<text stroke="none" fill="#000000" x="0,159,603" y="0" transform="translate(226,483)"
+											xml:space="preserve">DC</text>
+								</g>
+								<g font-family="&#39;Times New Roman&#39;,roman,serif" font-style="italic" font-weight="400"
+										font-size="384">
+									<text stroke="none" fill="#000000" x="0,768" y="0" transform="translate(70,384)"
+											xml:space="preserve">I</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<mask id="mfid80" fill-rule="evenodd" fill="white" stroke="none">
+						<rect x="0" y="0" width="703" height="665"/>
+					</mask>
+				</g>
+			</svg>
+			<rect x="0" y="577.276" width="18.9921" height="18" class="st4"/>
+		</g>
+	</g>
+</svg>
