@@ -1,64 +1,43 @@
-import subprocess
-import threading
-
-def realtime_read(stream, callback):
-    """实时读取流并调用回调函数处理输出"""
-    for line in iter(stream.readline, ''):  # 迭代读取每行输出，直到空字符串
-        callback(line)
-    stream.close()  # 读取完毕后关闭流
-
-def capture_subprocess_realtime(command):
-    """实时捕获 subprocess 的 stdout 和 stderr"""
-    # 启动进程，stdout 和 stderr 都用管道捕获
-    process = subprocess.Popen(
-        command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-        encoding='utf-8',
-        errors='replace'
-    )
-
-    # 定义 stdout 回调函数（实时处理标准输出）
-    def handle_stdout(line):
-        print(f"【实时输出】{line}", end='')  # end='' 避免重复换行（原输出已包含换行）
-
-    # 定义 stderr 回调函数（实时处理错误输出）
-    def handle_stderr(line):
-        print(f"【错误输出】{line}", end='')
-
-    # 创建线程分别处理 stdout 和 stderr
-    stdout_thread = threading.Thread(
-        target=realtime_read,
-        args=(process.stdout, handle_stdout)
-    )
-    stderr_thread = threading.Thread(
-        target=realtime_read,
-        args=(process.stderr, handle_stderr)
-    )
-
-    # 启动线程
-    stdout_thread.start()
-    stderr_thread.start()
-
-    # 等待进程结束和线程完成
-    process.wait()
-    stdout_thread.join()
-    stderr_thread.join()
-
-    return process.returncode  # 返回进程退出码
+import sys
+import io
+import re
 
 
-# 测试：实时捕获 robot 命令的输出
-if __name__ == "__main__":
-    key = 1  # 假设 key 是设备编号
-    # 构造命令（与你的原命令一致）
-    command = [
-        'robot',
-        '--test', f'测试读取设备{key}电压',
-        r'E:\study\S1\taida_cap\PFC_Autotest\STM32_Test_Suite.robot'
-    ]
+def extract_and_capture_python_output(text):
+    # 提取Python代码块
+    pattern = r'```python(.*?)```'
+    matches = re.findall(pattern, text, re.DOTALL)
 
-    print("开始执行命令，实时捕获输出...\n")
-    return_code = capture_subprocess_realtime(command)
-    print(f"\n命令执行完毕，退出码：{return_code}")
+    if not matches:
+        return "未找到Python代码块"
+
+    results = []
+    for i, code_block in enumerate(matches, 1):
+        # 创建一个字符串缓冲区用于捕获输出
+        buffer = io.StringIO()
+        # 保存原有的标准输出
+        original_stdout = sys.stdout
+        try:
+            # 重定向标准输出到缓冲区
+            sys.stdout = buffer
+            # 执行代码
+            exec(code_block.strip())
+            # 获取缓冲区内容（即print输出）
+            output = buffer.getvalue()
+            results.append(f"第{i}个代码块的输出：\n{output}")
+        except Exception as e:
+            results.append(f"第{i}个代码块执行出错：\n{str(e)}")
+        finally:
+            # 恢复标准输出
+            sys.stdout = original_stdout
+
+    return results
+sample_text = """
+代码块1：
+```python
+printf("Hello, World!")
+printf("这是第一个代码块")
+```
+"""
+outputs = extract_and_capture_python_output(sample_text)
+print(outputs)

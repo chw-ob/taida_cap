@@ -1,102 +1,837 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.13.1 on win32)" generated="20251023 10:28:21.415" rpa="false" schemaversion="4">
-<suite id="s1" name="STM32 Test Suite" source="E:\study\S1\taida_cap\PFC_Autotest\STM32_Test_Suite.robot">
-<test id="s1-t1" name="测试读取设备1电流" line="28">
+<robot generator="Robot 6.1.1 (Python 3.13.1 on win32)" generated="20251105 16:53:39.315" rpa="false" schemaversion="4">
+<suite id="s1" name="Auto test" source="E:\study\S1\taida_cap\PFC_Autotest\Auto_test.robot">
+<test id="s1-t1" name="单点效率测试" line="106">
 <kw name="Log" library="BuiltIn">
-<arg>正在初始化STM32设备1...</arg>
+<arg>开始单点效率测试...</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20251023 10:28:21.474" level="INFO">正在初始化STM32设备1...</msg>
-<status status="PASS" starttime="20251023 10:28:21.473" endtime="20251023 10:28:21.474"/>
+<msg timestamp="20251105 16:53:40.162" level="INFO">开始单点效率测试...</msg>
+<status status="PASS" starttime="20251105 16:53:40.162" endtime="20251105 16:53:40.163"/>
 </kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<var>${status}</var>
-<arg>Initialize STM32 Device</arg>
-<arg>${DEVICE1_ID}</arg>
-<arg>${DEVICE1_VID}</arg>
-<arg>${DEVICE1_PID}</arg>
-<arg>${BAUDRATE}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<kw name="Initialize Stm32 Device" library="STM32Library">
-<arg>${DEVICE1_ID}</arg>
-<arg>${DEVICE1_VID}</arg>
-<arg>${DEVICE1_PID}</arg>
-<arg>${BAUDRATE}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>初始化STM32设备</doc>
-<msg timestamp="20251023 10:28:21.494" level="INFO">STM32设备初始化失败: 未找到VID=0483, PID=5740的设备</msg>
-<status status="PASS" starttime="20251023 10:28:21.474" endtime="20251023 10:28:21.494"/>
+<kw name="Log" library="BuiltIn">
+<arg>测试参数: 输入电压=${SOURCE_VOLTAGE}V, 输入限流=${SOURCE_CURRENT}A, 频率=${FREQUENCY}Hz, 负载电流=${LOAD_CURRENT}A</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20251105 16:53:40.163" level="INFO">测试参数: 输入电压=220V, 输入限流=4A, 频率=50Hz, 负载电流=1.25A</msg>
+<status status="PASS" starttime="20251105 16:53:40.163" endtime="20251105 16:53:40.163"/>
 </kw>
-<msg timestamp="20251023 10:28:21.494" level="INFO">${status} = True</msg>
-<status status="PASS" starttime="20251023 10:28:21.474" endtime="20251023 10:28:21.494"/>
+<kw name="开关电源" library="Autotest_Source">
+<arg>${INSTRUMENT_SOURCE}</arg>
+<arg>0</arg>
+<doc>控制电源输出开关
+参数说明:
+${instrument} - 仪器类型 (APS7100|EC7800)
+${state} - 开关状态 (1|0)</doc>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${instrument}' in ['APS7100', 'EC7800', 'M3132']</arg>
+<arg>不支持的仪器类型: ${instrument} (支持: APS7100, EC7800)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.166" endtime="20251105 16:53:40.167"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
-<arg>${status}</arg>
-<arg>设备1初始化失败</arg>
+<arg>'${state}' in ['0', '1']</arg>
+<arg>无效的电源状态: ${state} (应为1或0)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20251023 10:28:21.494" endtime="20251023 10:28:21.494"/>
+<status status="PASS" starttime="20251105 16:53:40.167" endtime="20251105 16:53:40.167"/>
 </kw>
-<kw name="读取设备电流并验证" library="STM32Keywords">
-<var>${current}</var>
-<arg>${DEVICE1_ID}</arg>
-<doc>读取设备电流并在合理范围内验证</doc>
-<kw name="Read Current From Device" library="STM32Library">
-<var>${current}</var>
-<arg>${device_id}</arg>
-<doc>从指定设备读取电流值</doc>
-<msg timestamp="20251023 10:28:21.495" level="FAIL">设备 STM32_Device1 未初始化</msg>
-<status status="FAIL" starttime="20251023 10:28:21.495" endtime="20251023 10:28:21.496"/>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100' and '${state}' == '1'</arg>
+<arg>APS7100_打开输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.167" endtime="20251105 16:53:40.167"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100' and '${state}' == '0'</arg>
+<arg>APS7100_关闭输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.167" endtime="20251105 16:53:40.168"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'EC7800' and '${state}' == '1'</arg>
+<arg>EC7800_打开输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.168" endtime="20251105 16:53:40.168"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'EC7800' and '${state}' == '0'</arg>
+<arg>EC7800_关闭输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_关闭输出" library="AC_Source_EC7800">
+<doc>关闭EC7800交流电源输出</doc>
+<kw name="Set Output" library="EC7800">
+<arg>${EC7800_ADDR}</arg>
+<arg>OFF</arg>
+<doc>设置输出状态 ON/OFF</doc>
+<msg timestamp="20251105 16:53:40.193" level="INFO">交流电源[EC7800, addr=USB0::0x2EC7::0x7800::804765035807640001::INSTR, inst_id=3186805724160].</msg>
+<status status="PASS" starttime="20251105 16:53:40.168" endtime="20251105 16:53:40.193"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.168" endtime="20251105 16:53:40.193"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.168" endtime="20251105 16:53:40.193"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'M3132' and '${state}' == '1'</arg>
+<arg>M3132_打开电源</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.194" endtime="20251105 16:53:40.194"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'M3132' and '${state}' == '0'</arg>
+<arg>M3132_关闭电源</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.194" endtime="20251105 16:53:40.195"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.166" endtime="20251105 16:53:40.195"/>
+</kw>
+<kw name="开关负载" library="Autotest_Source">
+<arg>${INSTRUMENT_LOAD}</arg>
+<arg>0</arg>
+<doc>控制负载开关，支持IT8800、IT8900
+参数说明:
+${instrument} - 仪器类型 (IT8800|IT8900)
+${state} - 开关状态 (ON|OFF或1|0)</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${onoff}</var>
+<arg>'1' if '${state}'.upper() in ['ON', '1'] else ('0' if '${state}'.upper() in ['OFF', '0'] else None)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20251105 16:53:40.199" level="INFO">${onoff} = 0</msg>
+<status status="PASS" starttime="20251105 16:53:40.199" endtime="20251105 16:53:40.199"/>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<arg>${onoff}</arg>
+<arg>None</arg>
+<arg>无效的开关状态: ${state} (应为ON/OFF或1/0)</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" starttime="20251105 16:53:40.199" endtime="20251105 16:53:40.200"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'IT8800'</arg>
+<arg>IT8800_设置负载开关</arg>
+<arg>${onoff}</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8900'</arg>
+<arg>IT8900_设置负载开关</arg>
+<arg>${onoff}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>不支持的负载类型: ${instrument}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="IT8900_设置负载开关" library="DC_Load_IT8900">
+<arg>${onoff}</arg>
+<doc>设置负载输入开关状态
+0: 1=打开, 0=关闭</doc>
+<kw name="Set Input State" library="IT8900">
+<arg>${IT8900_ADDR}</arg>
+<arg>${onoff}</arg>
+<doc>设置输入状态 ON/OFF</doc>
+<msg timestamp="20251105 16:53:40.233" level="INFO">IT8900直流电子负载[addr=TCPIP0::192.168.200.100::30000::SOCKET]已连接.</msg>
+<status status="PASS" starttime="20251105 16:53:40.201" endtime="20251105 16:53:40.233"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.200" endtime="20251105 16:53:40.233"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.200" endtime="20251105 16:53:40.233"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.198" endtime="20251105 16:53:40.233"/>
+</kw>
+<kw name="设置电源" library="Autotest_Source">
+<arg>${INSTRUMENT_SOURCE}</arg>
+<arg>${SOURCE_VOLTAGE}</arg>
+<arg>${SOURCE_CURRENT}</arg>
+<arg>${FREQUENCY}</arg>
+<doc>统一电源设置关键字
+参数说明：
+${instrument} - 仪器类型 (APS7100|EC7800)
+${voltage} - 要设置的电压值(单位: V)
+${current} - 可选，要设置的限流值(单位: A)，默认为None表示不修改电流设置
+${fre} - 可选，要设置交流的频率，默认为None
+示例:
+设置电源 APS7100 220 设置APS7100交流电源220V交流电压
+设置电源 EC7800 220 3.0 50设置EC7800电源220V交流电压和3A输出电流限制，50Hz</doc>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${instrument}' in ['APS7100', 'EC7800', 'M3132']</arg>
+<arg>不支持的仪器类型: ${instrument} (支持: APS7100, EC7800)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.238" endtime="20251105 16:53:40.238"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${voltage} &gt;= 0</arg>
+<arg>电压值不能为负数</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.238" endtime="20251105 16:53:40.239"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_设置电压</arg>
+<arg>${voltage}</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'EC7800'</arg>
+<arg>EC7800_设置电压</arg>
+<arg>${voltage}</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'M3132'</arg>
+<arg>M3132_设置电源电压</arg>
+<arg>${voltage}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>不支持的仪器类型: ${instrument}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_设置电压" library="AC_Source_EC7800">
+<arg>${voltage}</arg>
+<doc>设置EC7800输出电压(V)</doc>
+<kw name="Set Voltage" library="EC7800">
+<arg>${EC7800_ADDR}</arg>
+<arg>${voltage}</arg>
+<doc>设置输出电压(V)</doc>
+<status status="PASS" starttime="20251105 16:53:40.240" endtime="20251105 16:53:40.240"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.239" endtime="20251105 16:53:40.240"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.239" endtime="20251105 16:53:40.240"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${current} != ${None}</arg>
+<arg>Run Keyword If</arg>
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_设置电流</arg>
+<arg>${current}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_设置电流</arg>
+<arg>${current}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.241" endtime="20251105 16:53:40.241"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.240" endtime="20251105 16:53:40.241"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${current} != ${None} and '${instrument}' == 'EC7800'</arg>
+<arg>EC7800_设置电流</arg>
+<arg>${current}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_设置电流" library="AC_Source_EC7800">
+<arg>${current}</arg>
+<doc>设置EC7800输出电流限制(A)</doc>
+<kw name="Set Current" library="EC7800">
+<arg>${EC7800_ADDR}</arg>
+<arg>${current}</arg>
+<doc>设置输出电流限制(A)</doc>
+<status status="PASS" starttime="20251105 16:53:40.241" endtime="20251105 16:53:40.242"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.241" endtime="20251105 16:53:40.242"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.241" endtime="20251105 16:53:40.242"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${current} != ${None} and '${instrument}' == 'M3132'</arg>
+<arg>M3132_设置电源电流</arg>
+<arg>${current}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.242" endtime="20251105 16:53:40.242"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${fre} != ${None}</arg>
+<arg>Run Keyword If</arg>
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_设置频率</arg>
+<arg>${fre}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_设置频率</arg>
+<arg>${fre}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:40.243" endtime="20251105 16:53:40.243"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.242" endtime="20251105 16:53:40.243"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${fre} != ${None} and '${instrument}' == 'EC7800'</arg>
+<arg>EC7800_设置频率</arg>
+<arg>${fre}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_设置频率" library="AC_Source_EC7800">
+<arg>${fre}</arg>
+<doc>设置EC7800输出频率(Hz)</doc>
+<kw name="Set Frequency" library="EC7800">
+<arg>${EC7800_ADDR}</arg>
+<arg>${frequency}</arg>
+<doc>设置输出频率(Hz)</doc>
+<status status="PASS" starttime="20251105 16:53:40.244" endtime="20251105 16:53:40.244"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.243" endtime="20251105 16:53:40.244"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.243" endtime="20251105 16:53:40.244"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:40.238" endtime="20251105 16:53:40.244"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20251105 16:53:41.245" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20251105 16:53:40.244" endtime="20251105 16:53:41.245"/>
+</kw>
+<kw name="开关电源" library="Autotest_Source">
+<arg>${INSTRUMENT_SOURCE}</arg>
+<arg>1</arg>
+<doc>控制电源输出开关
+参数说明:
+${instrument} - 仪器类型 (APS7100|EC7800)
+${state} - 开关状态 (1|0)</doc>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${instrument}' in ['APS7100', 'EC7800', 'M3132']</arg>
+<arg>不支持的仪器类型: ${instrument} (支持: APS7100, EC7800)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.248" endtime="20251105 16:53:41.248"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${state}' in ['0', '1']</arg>
+<arg>无效的电源状态: ${state} (应为1或0)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.248" endtime="20251105 16:53:41.248"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100' and '${state}' == '1'</arg>
+<arg>APS7100_打开输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.248" endtime="20251105 16:53:41.249"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100' and '${state}' == '0'</arg>
+<arg>APS7100_关闭输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.249" endtime="20251105 16:53:41.249"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'EC7800' and '${state}' == '1'</arg>
+<arg>EC7800_打开输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_打开输出" library="AC_Source_EC7800">
+<doc>开启EC7800交流电源输出</doc>
+<kw name="Set Output" library="EC7800">
+<arg>${EC7800_ADDR}</arg>
+<arg>ON</arg>
+<doc>设置输出状态 ON/OFF</doc>
+<status status="PASS" starttime="20251105 16:53:41.250" endtime="20251105 16:53:41.250"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:41.250" endtime="20251105 16:53:41.250"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:41.249" endtime="20251105 16:53:41.250"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'EC7800' and '${state}' == '0'</arg>
+<arg>EC7800_关闭输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.251" endtime="20251105 16:53:41.251"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'M3132' and '${state}' == '1'</arg>
+<arg>M3132_打开电源</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.251" endtime="20251105 16:53:41.251"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'M3132' and '${state}' == '0'</arg>
+<arg>M3132_关闭电源</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:41.251" endtime="20251105 16:53:41.251"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:41.247" endtime="20251105 16:53:41.252"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20251105 16:53:43.252" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20251105 16:53:41.252" endtime="20251105 16:53:43.253"/>
+</kw>
+<kw name="设置负载模式" library="Autotest_Source">
+<arg>${INSTRUMENT_LOAD}</arg>
+<arg>CC</arg>
+<arg>${LOAD_CURRENT}</arg>
+<arg>0</arg>
+<doc>设置负载工作模式
+参数说明:
+${instrument} - 仪器类型 (IT8800|IT8900)
+${mode} - 负载模式 (CC|CV|CR)
+${value} - 模式设定值 (CC:A, CV:V, CR:Ω)
+${state} - 负载开关状态 (ON|OFF或1|0, 默认OFF)</doc>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${instrument}' in ['IT8800', 'IT8900']</arg>
+<arg>不支持的负载类型: ${instrument}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:43.257" endtime="20251105 16:53:43.257"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${mode}' in ['CC', 'CV', 'CR']</arg>
+<arg>不支持的负载模式: ${mode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:43.258" endtime="20251105 16:53:43.258"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${onoff}</var>
+<arg>'1'if '${state}'.upper() in ['ON', '1'] else ('0' if '${state}'.upper() in ['OFF', '0'] else None)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20251105 16:53:43.258" level="INFO">${onoff} = 0</msg>
+<status status="PASS" starttime="20251105 16:53:43.258" endtime="20251105 16:53:43.258"/>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<arg>${onoff}</arg>
+<arg>None</arg>
+<arg>无效的开关状态: ${state} (应为ON/OFF或1/0)</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" starttime="20251105 16:53:43.258" endtime="20251105 16:53:43.258"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'IT8800'</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CC'</arg>
+<arg>IT8800_设置恒流模式负载电流值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<arg>AND</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CV'</arg>
+<arg>IT8800_设置恒压模式负载电压值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<arg>AND</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CR'</arg>
+<arg>IT8800_设置恒阻模式负载电阻值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:43.259" endtime="20251105 16:53:43.259"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'IT8900'</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CC'</arg>
+<arg>IT8900_设置恒流模式负载电流值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<arg>AND</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CV'</arg>
+<arg>IT8900_设置恒压模式负载电压值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<arg>AND</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CR'</arg>
+<arg>IT8900_设置恒阻模式负载电阻值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Run Keywords" library="BuiltIn">
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CC'</arg>
+<arg>IT8900_设置恒流模式负载电流值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<arg>AND</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CV'</arg>
+<arg>IT8900_设置恒压模式负载电压值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<arg>AND</arg>
+<arg>Run Keyword If</arg>
+<arg>'${mode}' == 'CR'</arg>
+<arg>IT8900_设置恒阻模式负载电阻值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${mode}' == 'CC'</arg>
+<arg>IT8900_设置恒流模式负载电流值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="IT8900_设置恒流模式负载电流值" library="DC_Load_IT8900">
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>设置恒流模式的电流值
+${current}: 电流值，单位A</doc>
+<kw name="Set Cc Current" library="IT8900">
+<arg>${IT8900_ADDR}</arg>
+<arg>${current}</arg>
+<doc>设置CC模式电流值</doc>
+<status status="PASS" starttime="20251105 16:53:43.261" endtime="20251105 16:53:43.261"/>
+</kw>
+<kw name="Set Input State" library="IT8900">
+<arg>${IT8900_ADDR}</arg>
+<arg>${onoff}</arg>
+<doc>设置输入状态 ON/OFF</doc>
+<status status="PASS" starttime="20251105 16:53:43.261" endtime="20251105 16:53:43.261"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.260" endtime="20251105 16:53:43.261"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.259" endtime="20251105 16:53:43.261"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${mode}' == 'CV'</arg>
+<arg>IT8900_设置恒压模式负载电压值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:43.262" endtime="20251105 16:53:43.262"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${mode}' == 'CR'</arg>
+<arg>IT8900_设置恒阻模式负载电阻值</arg>
+<arg>${value}</arg>
+<arg>${onoff}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:43.262" endtime="20251105 16:53:43.262"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.259" endtime="20251105 16:53:43.262"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.259" endtime="20251105 16:53:43.262"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.257" endtime="20251105 16:53:43.262"/>
+</kw>
+<kw name="开关负载" library="Autotest_Source">
+<arg>${INSTRUMENT_LOAD}</arg>
+<arg>1</arg>
+<doc>控制负载开关，支持IT8800、IT8900
+参数说明:
+${instrument} - 仪器类型 (IT8800|IT8900)
+${state} - 开关状态 (ON|OFF或1|0)</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${onoff}</var>
+<arg>'1' if '${state}'.upper() in ['ON', '1'] else ('0' if '${state}'.upper() in ['OFF', '0'] else None)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20251105 16:53:43.264" level="INFO">${onoff} = 1</msg>
+<status status="PASS" starttime="20251105 16:53:43.264" endtime="20251105 16:53:43.265"/>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<arg>${onoff}</arg>
+<arg>None</arg>
+<arg>无效的开关状态: ${state} (应为ON/OFF或1/0)</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" starttime="20251105 16:53:43.265" endtime="20251105 16:53:43.265"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'IT8800'</arg>
+<arg>IT8800_设置负载开关</arg>
+<arg>${onoff}</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8900'</arg>
+<arg>IT8900_设置负载开关</arg>
+<arg>${onoff}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>不支持的负载类型: ${instrument}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="IT8900_设置负载开关" library="DC_Load_IT8900">
+<arg>${onoff}</arg>
+<doc>设置负载输入开关状态
+1: 1=打开, 0=关闭</doc>
+<kw name="Set Input State" library="IT8900">
+<arg>${IT8900_ADDR}</arg>
+<arg>${onoff}</arg>
+<doc>设置输入状态 ON/OFF</doc>
+<status status="PASS" starttime="20251105 16:53:43.265" endtime="20251105 16:53:43.266"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.265" endtime="20251105 16:53:43.266"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.265" endtime="20251105 16:53:43.266"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:43.264" endtime="20251105 16:53:43.266"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20251105 16:53:47.266" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" starttime="20251105 16:53:43.266" endtime="20251105 16:53:47.267"/>
+</kw>
+<kw name="测量功率" library="Autotest_Source">
+<var>${input_power}</var>
+<arg>${INSTRUMENT_IN}</arg>
+<doc>统一功率测量关键字
+参数说明：
+${instrument} - 仪器类型 (ZXB001|ZXB002|APS7100|EC7800|IT8800|IT8900)
+返回值：测量得到的功率
+示例：
+${result} = 测量功率 APS7100 使用交流源APS7100读取功率
+${result} = 测量功率 ZXB001 使用ZXB001读取功率</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${result}</var>
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'EC7800'</arg>
+<arg>EC7800_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8800'</arg>
+<arg>IT8800_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8900'</arg>
+<arg>IT8900_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'ZXB001'</arg>
+<arg>ZXB001_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'ZXB002'</arg>
+<arg>ZXB002_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'M3132'</arg>
+<arg>M3132_读取电源功率</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>不支持的仪器类型: ${instrument}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_测量功率" library="AC_Source_EC7800">
+<doc>测量EC7800实际输出功率</doc>
+<kw name="Measure Power" library="EC7800">
+<var>${power}</var>
+<arg>${EC7800_ADDR}</arg>
+<doc>测量实际输出功率</doc>
+<msg timestamp="20251105 16:53:47.583" level="INFO">${power} = 506.059</msg>
+<status status="PASS" starttime="20251105 16:53:47.270" endtime="20251105 16:53:47.583"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:47.270" endtime="20251105 16:53:47.583"/>
+</kw>
+<msg timestamp="20251105 16:53:47.583" level="INFO">${result} = 506.059</msg>
+<status status="PASS" starttime="20251105 16:53:47.270" endtime="20251105 16:53:47.583"/>
+</kw>
+<msg timestamp="20251105 16:53:47.583" level="INFO">${input_power} = 506.059</msg>
+<status status="PASS" starttime="20251105 16:53:47.270" endtime="20251105 16:53:47.583"/>
+</kw>
+<kw name="测量功率" library="Autotest_Source">
+<var>${output_power}</var>
+<arg>${INSTRUMENT_OUT}</arg>
+<doc>统一功率测量关键字
+参数说明：
+${instrument} - 仪器类型 (ZXB001|ZXB002|APS7100|EC7800|IT8800|IT8900)
+返回值：测量得到的功率
+示例：
+${result} = 测量功率 APS7100 使用交流源APS7100读取功率
+${result} = 测量功率 ZXB001 使用ZXB001读取功率</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${result}</var>
+<arg>'${instrument}' == 'APS7100'</arg>
+<arg>APS7100_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'EC7800'</arg>
+<arg>EC7800_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8800'</arg>
+<arg>IT8800_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8900'</arg>
+<arg>IT8900_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'ZXB001'</arg>
+<arg>ZXB001_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'ZXB002'</arg>
+<arg>ZXB002_测量功率</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'M3132'</arg>
+<arg>M3132_读取电源功率</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>不支持的仪器类型: ${instrument}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="IT8900_测量功率" library="DC_Load_IT8900">
+<doc>测量负载功率，单位W</doc>
+<kw name="Measure Power" library="IT8900">
+<var>${power}</var>
+<arg>${IT8900_ADDR}</arg>
+<doc>测量功率</doc>
+<msg timestamp="20251105 16:53:47.595" level="INFO">${power} = 492.919</msg>
+<status status="PASS" starttime="20251105 16:53:47.593" endtime="20251105 16:53:47.595"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:47.592" endtime="20251105 16:53:47.595"/>
+</kw>
+<msg timestamp="20251105 16:53:47.595" level="INFO">${result} = 492.919</msg>
+<status status="PASS" starttime="20251105 16:53:47.586" endtime="20251105 16:53:47.595"/>
+</kw>
+<msg timestamp="20251105 16:53:47.595" level="INFO">${output_power} = 492.919</msg>
+<status status="PASS" starttime="20251105 16:53:47.585" endtime="20251105 16:53:47.595"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${efficiency}</var>
+<arg>(${output_power} / (${input_power} + 0.01)) * 100</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20251105 16:53:47.596" level="INFO">${efficiency} = 97.40154010619105</msg>
+<status status="PASS" starttime="20251105 16:53:47.595" endtime="20251105 16:53:47.596"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${efficiency}</var>
+<arg>round(${efficiency}, 2)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20251105 16:53:47.596" level="INFO">${efficiency} = 97.4</msg>
+<status status="PASS" starttime="20251105 16:53:47.596" endtime="20251105 16:53:47.596"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${device_id} 电流: ${current} A</arg>
+<arg>输入功率: ${input_power} W</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20251023 10:28:21.496" endtime="20251023 10:28:21.496"/>
-</kw>
-<kw name="Current Should Be Within Range" library="STM32Library">
-<arg>${device_id}</arg>
-<arg>${CURRENT_MIN}</arg>
-<arg>${CURRENT_MAX}</arg>
-<doc>验证设备电流在指定范围内</doc>
-<status status="NOT RUN" starttime="20251023 10:28:21.496" endtime="20251023 10:28:21.496"/>
-</kw>
-<status status="FAIL" starttime="20251023 10:28:21.494" endtime="20251023 10:28:21.496"/>
+<msg timestamp="20251105 16:53:47.596" level="INFO">输入功率: 506.059 W</msg>
+<status status="PASS" starttime="20251105 16:53:47.596" endtime="20251105 16:53:47.596"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>设备1电流测试通过: ${current}A</arg>
+<arg>输出功率: ${output_power} W</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20251023 10:28:21.496" endtime="20251023 10:28:21.496"/>
+<msg timestamp="20251105 16:53:47.596" level="INFO">输出功率: 492.919 W</msg>
+<status status="PASS" starttime="20251105 16:53:47.596" endtime="20251105 16:53:47.596"/>
 </kw>
-<doc>测试读取设备1电流值</doc>
-<tag>current</tag>
-<tag>device1</tag>
-<status status="FAIL" starttime="20251023 10:28:21.472" endtime="20251023 10:28:21.496">设备 STM32_Device1 未初始化</status>
+<kw name="Log" library="BuiltIn">
+<arg>效率: ${efficiency}%</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20251105 16:53:47.596" level="INFO">效率: 97.4%</msg>
+<status status="PASS" starttime="20251105 16:53:47.596" endtime="20251105 16:53:47.596"/>
+</kw>
+<kw name="开关电源" library="Autotest_Source">
+<arg>${INSTRUMENT_SOURCE}</arg>
+<arg>0</arg>
+<doc>控制电源输出开关
+参数说明:
+${instrument} - 仪器类型 (APS7100|EC7800)
+${state} - 开关状态 (1|0)</doc>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${instrument}' in ['APS7100', 'EC7800', 'M3132']</arg>
+<arg>不支持的仪器类型: ${instrument} (支持: APS7100, EC7800)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.598" endtime="20251105 16:53:47.598"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${state}' in ['0', '1']</arg>
+<arg>无效的电源状态: ${state} (应为1或0)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.598" endtime="20251105 16:53:47.598"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100' and '${state}' == '1'</arg>
+<arg>APS7100_打开输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.598" endtime="20251105 16:53:47.598"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'APS7100' and '${state}' == '0'</arg>
+<arg>APS7100_关闭输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.598" endtime="20251105 16:53:47.598"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'EC7800' and '${state}' == '1'</arg>
+<arg>EC7800_打开输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.598" endtime="20251105 16:53:47.599"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'EC7800' and '${state}' == '0'</arg>
+<arg>EC7800_关闭输出</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="EC7800_关闭输出" library="AC_Source_EC7800">
+<doc>关闭EC7800交流电源输出</doc>
+<kw name="Set Output" library="EC7800">
+<arg>${EC7800_ADDR}</arg>
+<arg>OFF</arg>
+<doc>设置输出状态 ON/OFF</doc>
+<status status="PASS" starttime="20251105 16:53:47.599" endtime="20251105 16:53:47.599"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:47.599" endtime="20251105 16:53:47.599"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:47.599" endtime="20251105 16:53:47.599"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'M3132' and '${state}' == '1'</arg>
+<arg>M3132_打开电源</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.600" endtime="20251105 16:53:47.600"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'M3132' and '${state}' == '0'</arg>
+<arg>M3132_关闭电源</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20251105 16:53:47.600" endtime="20251105 16:53:47.600"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:47.598" endtime="20251105 16:53:47.600"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20251105 16:53:50.600" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20251105 16:53:47.600" endtime="20251105 16:53:50.600"/>
+</kw>
+<kw name="开关负载" library="Autotest_Source">
+<arg>${INSTRUMENT_LOAD}</arg>
+<arg>0</arg>
+<doc>控制负载开关，支持IT8800、IT8900
+参数说明:
+${instrument} - 仪器类型 (IT8800|IT8900)
+${state} - 开关状态 (ON|OFF或1|0)</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${onoff}</var>
+<arg>'1' if '${state}'.upper() in ['ON', '1'] else ('0' if '${state}'.upper() in ['OFF', '0'] else None)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20251105 16:53:50.603" level="INFO">${onoff} = 0</msg>
+<status status="PASS" starttime="20251105 16:53:50.603" endtime="20251105 16:53:50.603"/>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<arg>${onoff}</arg>
+<arg>None</arg>
+<arg>无效的开关状态: ${state} (应为ON/OFF或1/0)</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" starttime="20251105 16:53:50.603" endtime="20251105 16:53:50.603"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${instrument}' == 'IT8800'</arg>
+<arg>IT8800_设置负载开关</arg>
+<arg>${onoff}</arg>
+<arg>ELSE IF</arg>
+<arg>'${instrument}' == 'IT8900'</arg>
+<arg>IT8900_设置负载开关</arg>
+<arg>${onoff}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>不支持的负载类型: ${instrument}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="IT8900_设置负载开关" library="DC_Load_IT8900">
+<arg>${onoff}</arg>
+<doc>设置负载输入开关状态
+0: 1=打开, 0=关闭</doc>
+<kw name="Set Input State" library="IT8900">
+<arg>${IT8900_ADDR}</arg>
+<arg>${onoff}</arg>
+<doc>设置输入状态 ON/OFF</doc>
+<status status="PASS" starttime="20251105 16:53:50.604" endtime="20251105 16:53:50.604"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:50.604" endtime="20251105 16:53:50.604"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:50.603" endtime="20251105 16:53:50.604"/>
+</kw>
+<status status="PASS" starttime="20251105 16:53:50.602" endtime="20251105 16:53:50.604"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>单点效率测试完成</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20251105 16:53:50.604" level="INFO">单点效率测试完成</msg>
+<status status="PASS" starttime="20251105 16:53:50.604" endtime="20251105 16:53:50.604"/>
+</kw>
+<doc>单点效率测试 - 在特定工作点测量效率
+使用方式:
+robot --variable INSTRUMENT_SOURCE:APS7100 --variable INSTRUMENT_LOAD:IT8800 --variable INSTRUMENT_IN:ZXB001 --variable INSTRUMENT_OUT:ZXB002 --variable SOURCE_VOLTAGE:220 --variable SOURCE_CURRENT:5.0 --variable FREQUENCY:50 --variable LOAD_CURRENT:2.0 STM32_Test_Suite.robot</doc>
+<tag>efficiency</tag>
+<tag>single-point</tag>
+<status status="PASS" starttime="20251105 16:53:40.160" endtime="20251105 16:53:50.604"/>
 </test>
-<kw name="清理测试环境" library="STM32Keywords" type="TEARDOWN">
-<doc>关闭所有连接</doc>
-<kw name="Close All Connections" library="STM32Library">
-<doc>关闭所有设备连接</doc>
-<status status="PASS" starttime="20251023 10:28:21.497" endtime="20251023 10:28:21.497"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>所有设备连接已关闭</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20251023 10:28:21.497" level="INFO">所有设备连接已关闭</msg>
-<status status="PASS" starttime="20251023 10:28:21.497" endtime="20251023 10:28:21.497"/>
-</kw>
-<status status="PASS" starttime="20251023 10:28:21.497" endtime="20251023 10:28:21.497"/>
-</kw>
-<status status="FAIL" starttime="20251023 10:28:21.417" endtime="20251023 10:28:21.497"/>
+<status status="PASS" starttime="20251105 16:53:39.318" endtime="20251105 16:53:50.605"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">current</stat>
-<stat pass="0" fail="1" skip="0">device1</stat>
+<stat pass="1" fail="0" skip="0">efficiency</stat>
+<stat pass="1" fail="0" skip="0">single-point</stat>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="STM32 Test Suite">STM32 Test Suite</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Auto test">Auto test</stat>
 </suite>
 </statistics>
 <errors>

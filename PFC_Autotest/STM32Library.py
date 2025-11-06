@@ -65,6 +65,17 @@ class STM32Library:
             raise Exception(f"从设备 {device_id} 读取电流失败")
 
         return float(current)
+    def read_pf_from_device(self, device_id):
+
+        if not STM32Communicator.is_device_connected(device_id):
+            raise Exception(f"设备 {device_id} 未初始化")
+
+        pf = self.communicator.read_pf(device_id)
+
+        if pf is None:
+            raise Exception(f"从设备 {device_id} 读取PF失败")
+
+        return float(pf)
 
     def read_all_parameters_from_device(self, device_id):
         """从设备读取所有参数
@@ -82,6 +93,29 @@ class STM32Library:
             "voltage": voltage,
             "current": current
         }
+
+    def read_watt_from_device(self, device_id):
+        """从设备读取功率参数
+
+        Args:
+            device_id: 设备标识符
+
+        Returns:
+            float: 计算得到的功率值
+        """
+        voltage = self.read_voltage_from_device(device_id)
+        current = self.read_current_from_device(device_id)
+
+        # 根据设备ID判断是直流还是交流测量
+        if device_id == "STM32_Device2":
+            # 直流设备，功率因数为1
+            pf = 1
+        else:
+            # 交流设备，从设备读取功率因数
+            pf = self.read_pf_from_device(device_id)
+
+        watt = voltage * current * pf
+        return watt
 
     def voltage_should_be_within_range(self, device_id, min_voltage, max_voltage):
         """验证设备电压在指定范围内
@@ -145,15 +179,20 @@ if __name__ == "__main__":
     # 测试代码
     stm32 = STM32Library()
     print("初始化设备1:", stm32.initialize_stm32_device("STM32_Device1", "0483", "5740"))
-    print("初始化设备2:", stm32.initialize_stm32_device("STM32_Device2", "0484", "5741"))
+    # print("初始化设备2:", stm32.initialize_stm32_device("STM32_Device2", "0484", "5741"))
     print("已连接设备:", stm32.list_connected_devices())
-    print("设备1连接状态:", stm32.device_should_be_connected("STM32_Device1"))
-    print("设备2连接状态:", stm32.device_should_be_connected("STM32_Device2"))
+    # print("设备1连接状态:", stm32.device_should_be_connected("STM32_Device1"))
+    # print("设备2连接状态:", stm32.device_should_be_connected("STM32_Device2"))
 
     # 测试读取数据
     try:
-        voltage = stm32.read_voltage_from_device("STM32_Device2")
-        voltage1 = stm32.read_voltage_from_device("STM32_Device1")
-        print(f"设备2电压: {voltage} V")
+        voltage = stm32.read_voltage_from_device("STM32_Device1")
+        cur = stm32.read_current_from_device("STM32_Device1")
+        pf = stm32.read_pf_from_device("STM32_Device1")
+        watt = stm32.read_watt_from_device("STM32_Device1")
+        print(f"设备1电压: {voltage} V")
+        print(f"设备1A: {cur} A")
+        print(f"设备1pf: {pf} ")
+        print(f"设备1watt: {watt}W ")
     except Exception as e:
         print(f"读取电压失败: {e}")

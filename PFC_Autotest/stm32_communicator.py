@@ -10,6 +10,7 @@ class CommandType(IntEnum):
     READ_VOLTAGE = 0x01
     READ_CURRENT = 0x02
     SET_PARAM = 0x03
+    READ_PF = 0x04
 
 
 class STM32Communicator:
@@ -152,7 +153,7 @@ class STM32Communicator:
 
             frame = self.build_frame(cmd)
             inst.write(frame)
-            print(f"发送到 ID{device_id}: {[hex(b) for b in frame]}")
+            # print(f"发送到 ID{device_id}: {[hex(b) for b in frame]}")
 
             time.sleep(0.1)
             response = inst.read_all()
@@ -161,7 +162,7 @@ class STM32Communicator:
                 print("未收到响应")
                 return None
 
-            print(f"从 ID{device_id} 接收: {[hex(b) for b in response]}")
+            # print(f"从 ID{device_id} 接收: {[hex(b) for b in response]}")
             return self.parse_response(response)
 
         except Exception as e:
@@ -170,24 +171,25 @@ class STM32Communicator:
 
     def read_voltage(self, device_id, vid=None, pid=None):
         """读取电压值"""
-        print(f"向设备 ID{device_id} 发送读取电压命令...")
         result = self.send_command(device_id, CommandType.READ_VOLTAGE, vid, pid)
         if result is not None:
             cmd, value = result
-            print(f"设备 ID{device_id} 电压值: {value:.3f} V")
             return value
         return None
 
     def read_current(self, device_id, vid=None, pid=None):
         """读取电流值"""
-        print(f"向设备 ID{device_id} 发送读取电流命令...")
         result = self.send_command(device_id, CommandType.READ_CURRENT, vid, pid)
         if result is not None:
             cmd, value = result
-            print(f"设备 ID{device_id} 电流值: {value:.3f} A")
             return value
         return None
-
+    def read_pf(self, device_id, vid=None, pid=None):
+        result = self.send_command(device_id, CommandType.READ_PF, vid, pid)
+        if result is not None:
+            cmd, value = result
+            return value
+        return None
     def get_device_info(self, device_id):
         """获取设备信息"""
         if device_id in self._insts:

@@ -1,0 +1,6 @@
+{
+    "source": "EC7800",
+    "load": "IT8900",
+    "inputmeas_inst": "EC7800",
+    "outputmeas_inst": "IT8900"
+}

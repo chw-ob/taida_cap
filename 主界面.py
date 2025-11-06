@@ -1,12 +1,73 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
-                             QHBoxLayout, QPushButton, QLineEdit, QFrame)
+                             QHBoxLayout, QPushButton, QLineEdit, QFrame, QTextEdit, QLabel)
 from PyQt5.QtCore import Qt, pyqtSignal, QThread
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QIcon,QPixmap
 from PyQt5.QtWebEngineWidgets import QWebEngineView
+from 大语言模型调用 import chat_suanfa
+from PyQt5.QtSvg import QSvgWidget
+import re
+def format_python_text(text):
+    """
+    处理包含Python代码的文本，为代码块添加美观的样式
+    """
+    # 定义代码块的CSS样式（黑色背景、语法高亮基础样式、等宽字体）
+    code_style = """
+    background-color: #1e1e1e;  /* 深色背景 */
+    color: #dcdcdc;             /* 基础文字颜色 */
+    font-family: 'Consolas', 'Monaco', monospace;  /* 等宽代码字体 */
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;           /* 横向滚动（防止长代码换行） */
+    display: block;
+    """
 
-from 大语言模型调用 import chat,chat_suanfa
+    # 为Python关键字、注释、字符串等添加基础语法高亮（通过正则替换）
+    def highlight_code(match):
+        code = match.group(1)
+        # 替换注释（绿色）
+        code = re.sub(r'(#.*?)\n', r'<span style="color: #6a9955">\1</span>\n', code)
+        # 替换字符串（黄色）
+        code = re.sub(r'(\'\'\'.*?\'\'\'|".*?"|\'.*?\')', r'<span style="color: #ce9178">\1</span>', code,
+                      flags=re.DOTALL)
+        # 替换关键字（蓝色）
+        keywords = r'\b(False|None|True|and|as|assert|async|await|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield)\b'
+        code = re.sub(keywords, r'<span style="color: #569cd6">\1</span>', code)
+        # 替换数字（青色）
+        code = re.sub(r'\b(\d+)\b', r'<span style="color: #b5cea8">\1</span>', code)
+        return f'<pre style="{code_style}">python代码如下:{code}</pre>'
 
+    # 匹配```python开头的代码块并应用高亮样式
+    formatted_text = re.sub(
+        r'```python(.*?)```',
+        highlight_code,
+        text,
+        flags=re.DOTALL
+    )
+
+    return formatted_text
+class CustomTextEdit(QTextEdit):
+    """自定义文本输入框：Shift+Enter触发发送，纯Enter仅换行"""
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.send_callback = None  # 发送消息的回调函数
+
+    def keyPressEvent(self, event):
+        # 判断是否按下Enter键（包括主键盘和小键盘的Enter）
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            # 检查是否同时按下Shift键
+            if event.modifiers() & Qt.ShiftModifier:
+                # Shift+Enter：触发发送消息
+                if self.send_callback:
+                    self.send_callback()
+                # 阻止默认换行（避免发送后额外换行）
+                return
+            else:
+                # 纯Enter：仅执行默认换行，不发送
+                super().keyPressEvent(event)
+                return
+        # 其他按键：正常处理
+        super().keyPressEvent(event)
 class ChatThread(QThread):
     """处理对话函数的线程类"""
     message_received = pyqtSignal(str)
@@ -23,10 +84,23 @@ class ChatThread(QThread):
         self.message_received.emit(str(message))
 
     def run(self):
-        """模拟流式输出，包含函数调用示例"""
-        #chat(self.output)
-        chat_suanfa(self.message,self.mode,self.output)
-        self.message_received.emit("结束#结束")
+        if self.mode=='自动测试':
+            print("function:自动测试")
+            print(f"self.mode:{self.mode}")
+            chat_suanfa(self.message,self.mode,self.output)
+            self.message_received.emit("结束#结束")
+        elif self.mode=='电感选型':
+            chat_suanfa(self.message,self.mode,self.output)
+            self.message_received.emit("结束#结束")
+        elif self.mode=='仿真分析':
+            chat_suanfa(self.message,self.mode,self.output)
+            self.message_received.emit("结束#结束")
+        elif self.mode=='数据分析':
+            chat_suanfa(self.message,self.mode,self.output)
+            self.message_received.emit("结束#结束")
+        else:
+            chat_suanfa(self.message, self.mode, self.output)
+            self.message_received.emit("结束#结束")
 
 
 class LLMChatInterface(QMainWindow):
@@ -34,7 +108,8 @@ class LLMChatInterface(QMainWindow):
         super().__init__()
 
         # 窗口基本设置
-        self.setWindowTitle("LLM对话界面")
+        self.setWindowTitle("PE Agent")
+        self.setWindowIcon(QIcon(r"资源文件/pe_agent.ico"))
         screen_geometry = QApplication.primaryScreen().geometry()
         screen_width = screen_geometry.width()
         screen_height = screen_geometry.height()
@@ -138,20 +213,22 @@ class LLMChatInterface(QMainWindow):
         self.main_layout = QHBoxLayout(self.central_widget)
 
         # 创建左右面板
+        self.show()
         self.create_left_panel()
         self.create_right_panel()
 
         # 初始化界面
         self.init_ui()
-        self.update_chat_display()
+        #self.update_chat_display()
         self.chat_message=[]
         self.chat_container=[]
         def init():
             self.add_message("system", "欢迎使用Pe Agent！")
-            self.add_message("你", "函数\\(sinx\\)在\\(x = 0\\)处的泰勒展开（麦克劳林级数）是：\n")
-            self.add_message("system", "欢迎使用Pe Agent！")
         self.is_stream=False
         self.chat_display.loadFinished.connect(init)
+        self.auto_test_clicked=False
+        self.suanfa_selected=False
+        self.data_selected=False
 
     def init_ui(self):
         # 样式设置
@@ -187,6 +264,28 @@ class LLMChatInterface(QMainWindow):
 
         # 初始消息
 
+    def adjust_image_size(self, image_path,width):
+        """核心方法：图片宽度=按钮宽度，高度自适应"""
+        # 加载图片
+        pixmap = QPixmap(image_path)
+        if pixmap.isNull():
+            self.image_label.setText("图片加载失败")
+            return
+
+        # 获取按钮当前宽度（锚定目标）
+        target_width = width
+        # 计算图片自适应高度（按原宽高比）
+        target_height = int(pixmap.height() * (target_width / pixmap.width()))
+        print(f"target_width={target_width},target_height={target_height}")
+        # 缩放图片：宽度=按钮宽度，高度=自适应高度
+        scaled_pixmap = pixmap.scaled(
+            target_width, target_height,
+            aspectRatioMode=Qt.IgnoreAspectRatio,  # 强制匹配目标宽高（此处因比例计算，实际无变形）
+            transformMode=Qt.SmoothTransformation  # 平滑缩放
+        )
+
+        # 显示图片（Label高度随图片自动调整）
+        return scaled_pixmap
     def create_left_panel(self):
         # 左侧面板和按钮
         self.left_panel = QFrame()
@@ -197,60 +296,90 @@ class LLMChatInterface(QMainWindow):
             border-radius: 5px;
             }
             """)
-        self.left_panel.setMaximumWidth(200)
+        self.left_panel.setMaximumWidth(300)
+        self.left_panel.setMinimumWidth(300)
         self.left_layout = QVBoxLayout(self.left_panel)
 
         self.suanfa_xuanze_btn = QPushButton("电感选型")
-        self.suanfa_xuanze_btn.setFont(QFont("SimHei", 12))
-        self.suanfa_xuanze_btn.setStyleSheet("""
+        self.ansys_simulate_btn = QPushButton("仿真分析")
+        self.auto_test_btn = QPushButton("自动测试")
+        self.data_ana_btn = QPushButton("数据分析")
+        self.new_chat_btn = QPushButton("新对话")
+        self.left_button_index={"电感选型":self.suanfa_xuanze_btn,"仿真分析":self.ansys_simulate_btn,
+                                "自动测试":self.auto_test_btn,"新对话":self.new_chat_btn,"数据分析":self.data_ana_btn}
+        for key,btn in self.left_button_index.items():
+            btn.setFont(QFont("SimHei", 12))
+            btn.setStyleSheet("""
             QPushButton {
                 background-color: #FFFFFF;
                 border-radius: 8px;
                 border: 1px solid #DDDDDD;
                 padding: 10px;
-                text-align: left;
+                text-align: center;
                 font-size: 20px;
             }
             QPushButton:hover { background-color: #B4C7E7; }
             QPushButton:checked {
-                background-color: #1B5E20;
-                border: 2px solid #FFC107;
+                background-color: #8FAADC;
+                border: 2px solid #8FAADC;
             }
         """)
-        self.suanfa_xuanze_btn.setCheckable(True)
+            btn.setCheckable(True)
+            btn.setMinimumHeight(70)
 
-        self.new_chat_btn = QPushButton("新对话")
-        self.new_chat_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #FFFFFF;
-                border-radius: 8px;
-                border: 1px solid #DDDDDD;
-                padding: 10px;
-                text-align: left;
-                font-size: 20px;
-            }
-            QPushButton:hover { background-color: #B4C7E7; }
-        """)
+        self.left_button_layout_index=['电感选型','仿真分析','自动测试','数据分析','新对话']
 
-        self.suanfa_xuanze_btn.setMinimumHeight(50)
-        self.new_chat_btn.setMinimumHeight(50)
+        for key in self.left_button_layout_index:
+            btn=self.left_button_index[key]
+            self.left_layout.addWidget(btn)
 
-        self.left_layout.addWidget(self.suanfa_xuanze_btn)
-        self.left_layout.addWidget(self.new_chat_btn)
         self.left_layout.addStretch()
 
-        self.new_chat_btn.clicked.connect(self.clear_chat)
+
+        self.pfc_picture=QLabel()
+        self.pfc_picture.setStyleSheet("border: none;background-color: transparent;")
+        self.left_layout.addWidget(self.pfc_picture)
+        self.pfc_picture.setPixmap(self.adjust_image_size(r"资源文件/绘图1.png", 270))
+
+
+        '''self.new_chat_btn.clicked.connect(self.clear_chat)
+        self.auto_test_btn.clicked.connect(self.on_auto_test_clicked)
         self.suanfa_xuanze_btn.clicked.connect(self.on_suanfa_clicked)
+        self.data_ana_btn.clicked.connect(self.on_data_ana_clicked)
+        self.ansys_simulate_btn.clicked.connect(self.on_ansys_simulate_clicked)'''
 
+        self.new_chat_btn.clicked.connect(self.clear_chat)
+        for key,btn in self.left_button_index.items():
+            if key=='新对话':
+                continue
+            else:
+                btn.clicked.connect(lambda checked,k=key: self.on_function_call_clicked(k))
+                print("key:",key)
         self.main_layout.addWidget(self.left_panel)
-
-    def on_suanfa_clicked(self):
-        self.suanfa_selected = self.suanfa_xuanze_btn.isChecked()
-        if self.suanfa_selected:
-            self.add_message("system:", "电感选型模式")
+    def on_function_call_clicked(self,key):
+        print("key:",key,"checked:",self.left_button_index[key].isChecked())
+        if not self.left_button_index[key].isChecked():
+            self.add_message("system", f"已取消{key}模式")
+            self.left_button_index[key].setChecked(False)
+            return
         else:
-            pass#self.add_message("system:", "已取消算法模式")
-
+            for key_,btn in self.left_button_index.items():
+                print(f"key_:{key_},key:{key}")
+                if key_==key:
+                    continue
+                if btn.isChecked():
+                    self.add_message("system", f"已取消{key_}模式")
+                    btn.setChecked(False)
+            self.left_button_index[key].setChecked(True)
+            self.add_message("system", f"{key}模式")
+        pass
+    def clear_chat(self):
+        """清空对话"""
+        self.new_chat_btn.setChecked(False)
+        print(f":self.chat_history:{self.chat_history}")
+        self.chat_history = []
+        self.chat_message = []
+        self.add_message("system", "已开始新对话，请输入您的问题...")
     def create_right_panel(self):
         # 右侧对话区域
         def change_status(succes):
@@ -261,27 +390,57 @@ class LLMChatInterface(QMainWindow):
 
         # 使用QWebEngineView显示内容
         self.chat_display = QWebEngineView()
-        self.chat_display.setHtml(self.base_html)
+
+        import os
+        local_image_path = "E:/study/S1/taida_cap/资源文件/绘图1.jpg"
+        from PyQt5.QtCore import QUrl
+        image_url = QUrl.fromLocalFile(local_image_path).toString()
+        print(f"image_url:{image_url}")
+        image_dir = os.path.dirname(local_image_path)  # 获取图片所在文件夹路径
+        base_url = QUrl.fromLocalFile(image_dir)
+
+        self.chat_display.setHtml(self.base_html,baseUrl=base_url)
         self.chat_display.loadFinished.connect(change_status)
         #self.chat_display.page().toHtml(lambda html: print("HTML内容:", html))
         self.chat_display.page().setDevToolsPage(self.chat_display.page())
 
         # 输入区域
         self.input_layout = QHBoxLayout()
-        self.message_input = QLineEdit()
+        self.message_input = CustomTextEdit()
+
         self.message_input.setPlaceholderText("请输入消息...")
-        self.message_input.returnPressed.connect(self.send_message)
+        self.message_input.send_callback = self.send_message
+        #self.message_input.clicked.connect(self.send_message)
 
         self.send_btn = QPushButton("对话")
+        self.send_btn.setStyleSheet("""
+                                    QPushButton {
+                                        
+                                        text-align: center;
+                                        font-size: 25px;
+                                        padding: 6px 12px;
+                                        font-family: 'Times New Roman', '宋体';
+                                    }
+                                    /* 可选： hover 时的样式（鼠标悬浮效果） */
+                                    QPushButton:hover {
+                                        background-color: #f0f0f0;
+                                    }
+                                """)
+        self.message_input.setMinimumHeight(80)
+        self.send_btn.setMinimumHeight(80)
+        #self.send_btn.setMinimumWidth(100)
+
+
         self.send_btn.clicked.connect(self.send_message)
 
-        self.input_layout.addWidget(self.message_input, 7)
-        self.input_layout.addWidget(self.send_btn, 1)
+        self.input_layout.addWidget(self.message_input, 5)
+        self.input_layout.addWidget(self.send_btn,1)
 
         self.right_layout.addWidget(self.chat_display, 8)
         self.right_layout.addLayout(self.input_layout, 1)
 
         self.main_layout.addWidget(self.right_panel, 4)
+
 
     def add_message(self, sender, message, is_new_line=True):
         """添加消息到历史记录，is_new_line控制是否自动换行"""
@@ -292,10 +451,11 @@ class LLMChatInterface(QMainWindow):
         self.chat_container.append("content"+str(len(self.chat_container)))
         # 添加到历史记录，控制是否自动换行
         escaped_message = message.replace("\\", "\\\\")
+        sender_dict={"你":"用户","system":"system","LLM":"LLM"}
         new_msg_html=f"""
         <div id='{self.chat_container[-1]}' style="{self.style_dict['div_'+sender]};">
             <p>
-                <span style="{self.style_dict[sender]}">{sender}:</span>
+                <span style="{self.style_dict[sender]}">{sender_dict[sender]}:</span>
                 <span style="{self.style_dict['message']}">{escaped_message}</span>
             </p>
         </div>
@@ -305,18 +465,10 @@ class LLMChatInterface(QMainWindow):
 
         # 执行JS并在控制台打印结果
 
-
-
-    def update_chat_display(self):
-        """更新网页显示"""
-        #content = ''.join(self.chat_history)
-        #html = self.base_html.format(content=content)
-        #self.chat_display.setHtml(html)
-        #self.chat_display.page().runJavaScript("window.scrollTo(0, document.body.scrollHeight);")
-
     def send_message(self):
         """发送用户消息"""
-        message = self.message_input.text().strip()
+        message = self.message_input.toPlainText().strip()
+        #self.chat_message.append(message)
         if message:
             self.add_message("你", message)
             self.message_input.clear()
@@ -324,12 +476,12 @@ class LLMChatInterface(QMainWindow):
 
     def get_llm_response(self, message):
         """获取LLM响应"""
-        if self.suanfa_xuanze_btn.isChecked():
-            mode="L_choose"
-        else:
-            mode=None
+        mode=None
+        for key,btn in self.left_button_index.items():
+            if btn.isChecked():
+                mode=key
+
         self.chat_message.append({"role": "user", "content":f"{message}"})
-        self.chat_thread = ChatThread(self.chat_message,mode)
         self.is_stream=True
 
         self.chat_container.append("content" + str(len(self.chat_container)))
@@ -345,19 +497,11 @@ class LLMChatInterface(QMainWindow):
         self.chat_history.append({"role": "user", "content":f"{message}"})
         self.chat_history.append({"role": "system", "content":""})
 
-        self.chat_message.append({"role": "system", "content":"0"})
+        self.chat_message.append({"role": "system", "content":""})
 
         self.chat_container.append("content" + str(len(self.chat_container)))
-        self.temp_message=''
-        self.last_char="0"
-        self.last_last_char='0'
-        self.last_s='0'
-        self.last_last_s = '0'
-        self.last_last_last_s = '0'
-        self.flag_strong='0'
-        self.flag_em = 0
-        self.is_latex=0
-        self.latex_f = 0
+        self.temp_message=""
+        self.chat_thread = ChatThread(self.chat_message, mode)
         self.chat_thread.message_received.connect(self.append_llm_message)
         self.chat_thread.start()
 
@@ -365,213 +509,74 @@ class LLMChatInterface(QMainWindow):
         """追加LLM消息（核心：不自动换行但保留手动换行）"""
         # 检查是否是第一条LLM消息
         if message=='结束#结束':
-            self.is_stream=False
-            return
-
-            #self.chat_message[-1]["content"] = self.chat_message[-1]["content"].replace("\\", "\\\\")
-        for char in message:
-            if char=="*":
-                pass
-            elif char=="#":
-                pass
-            elif char=='\\':
-                pass
-            elif char in ['(',')','[',']']:
-                pass
-            else:
-                if self.last_char=="*" and self.last_last_char=="*":
-                    self.flag_em=1 if self.flag_em==0 else 0
-
-                elif self.last_char=="*" and self.last_last_char!="*":
-                    self.temp_message+="*"
-
-                elif self.last_s=="#" and self.last_last_s=="#" and self.last_last_last_s=="#":
-                    self.flag_strong=1
-
-                elif self.last_s == "#" and self.last_last_s != "#" :
-                    self.temp_message+="#"
-
-                elif self.last_s=="#" and self.last_last_s=="#" and self.last_last_last_s!="#":
-                    self.temp_message+="##"
-
-                elif self.last_s=="(" and self.last_last_s=='\\' :
-                    self.is_latex=1
-                    self.temp_message+="\\\\("
-                elif self.last_s=="[" and self.last_last_s=='\\':
-                    self.is_latex=1
-                    self.temp_message += "\\\\["
-
-                elif self.last_s==")" and self.last_last_s=='\\':
-                    self.is_latex=0
-                    self.latex_f=1
-                    self.temp_message += "\\\\)"
-                elif self.last_s==")" and self.last_last_s!="\\":
-                    self.temp_message +=')'
-                elif self.last_s == "\\":
-                    self.temp_message += '\\\\'
-                elif self.last_s=="]" and self.last_last_s=='\\':
-                    self.is_latex=0
-                    self.latex_f = 1
-                    self.temp_message += "\\\\]"
-                elif char=="\n":
-                    self.flag_strong=0
-                #char='\\\\' if char=='\\' else char
-                if self.latex_f!=1:
-                    char='<br>' if char=='\n' else char
-                if self.latex_f==1 and char!=' ':
-                    #print(f"latex_f:{char}")
-                    pass
-                self.temp_message+=char
-
-            self.last_last_last_s=self.last_last_s
-            self.last_last_s=self.last_s
-            self.last_s=char
-
-            self.last_last_char=self.last_char
-            self.last_char=char
-        if self.is_latex:
-            return
-        elif self.latex_f==1:
-            self.latex_f=0
-            #print(self.temp_message)
-            #self.chat_container.append("content" + str(len(self.chat_container)))
+            import re
+            text = self.chat_message[-1]['content']
+            plain_text = text
+            #text=text.replace(' ','&nbsp;')
+            text=format_python_text(text)
+            pattern = r'###(.*?)<br>'
+            replacement = r'<strong>\1</strong><br>'
+            text = re.sub(pattern, replacement, text)
+            # 2. 再处理 **文字**（成对强调）：无需特殊标志
+            pattern_emphasis = re.compile(r'\*\*(.*?)\*\*', re.DOTALL)
+            text = pattern_emphasis.sub(r'<strong>\1</strong>', text)
+            print(f"转换后:{text}")
+            #self.chat_display.page().runJavaScript(js_code)
             new_msg_html = f"""
-                             <span style="{self.style_dict["message"]}">{self.temp_message}</span>
-                            """
-            print(f"new_meg_html:{new_msg_html}")
+                                                         <span style="{self.style_dict["message"]}">{text}</span>
+                                                    """
+            new_msg_html = new_msg_html.replace("`", "\\`")
+            print(f"finl_meg_html:{new_msg_html}")
             js_code = f"""
-                                var container = document.getElementById('content-container');
-                                var container_temp = document.getElementById('{self.chat_container[-1]}');
-                                if (!container) {{
-                                    console.error('容器元素未找到！请检查HTML中是否存在id="content-container"的元素');
-                                }} else {{
-                                    try {{
-                                        if (!container_temp) {{
-                                            // 新增元素：使用innerHTML追加模板字符串
-                                            container.innerHTML += `<div id='{self.chat_container[-1]}' style="{self.style_dict['div_' + "LLM"]};">{new_msg_html}</div>`;
-                                        }} else {{
-                                            // 更新已有元素：设置innerHTML（修复赋值语法）
-                                            container_temp.innerHTML += `{new_msg_html}`;
-                                        }}
-                                        // 滚动到底部
-                                        window.scrollTo(0, document.body.scrollHeight);
-                                        requestAnimationFrame(() => {{
-                                            var container_temp = document.getElementById('{self.chat_container[-1]}');
-                                            if (container_temp) {{ 
-                                                MathJax.typesetPromise([container_temp]).catch(err => console.error('MathJax渲染失败:', err));
-                                            }} else {{
-                                                console.error('未找到容器元素:', '{self.chat_container[-1]}');
-                                            }}
-                                        }});
-                                    }} catch (e) {{
-                                        console.error('操作失败:', e);
-                                    }}
-                                }}
-                                """
+                                    var container_temp = document.getElementById('{self.chat_container[-1]}');
+                                     container_temp.innerHTML = `{new_msg_html}`;
+                                            // 滚动到底部
+                                     window.scrollTo(0, document.body.scrollHeight)
+                                     MathJax.typesetPromise([container_temp])
+                                     window.scrollTo(0, document.body.scrollHeight)
+                                    """
             self.chat_display.page().runJavaScript(js_code)
-            #self.chat_display.page().toHtml(lambda html: print("HTML内容:", html))
-            #self.chat_container.append("content" + str(len(self.chat_container)))
+            js_code = f"""
+                                                var container_temp = document.getElementById('{self.chat_container[-1]}');
+                                                 MathJax.typesetPromise([container_temp])
+                                                 window.scrollTo(0, document.body.scrollHeight)
+                                                """
+            self.chat_display.page().runJavaScript(js_code)
+            self.temp_message = ''
+            return
+        message=message.replace('\\','\\\\')#="<br>" if message=='\n' else message
+        message=message.replace('\n','<br>')
+        self.temp_message+=message
+        self.chat_message[-1]['content']+=message
+        self.temp_message=self.temp_message.replace(' ','&nbsp;')
+        if len(self.temp_message)>=5:
+            new_msg_html = f"""
+                                 <span style="{self.style_dict["message"]}">{self.temp_message}</span>
+                            """
+
+            #print(f"new_meg_html:{new_msg_html}")
+            js_code = f"""
+                                    var container = document.getElementById('content-container');
+                                    var container_temp = document.getElementById('{self.chat_container[-1]}');
+                                    if (!container) {{
+                                        console.error('容器元素未找到！请检查HTML中是否存在id="content-container"的元素');
+                                    }} else {{
+                                            if (!container_temp) {{
+                                                // 新增元素：使用innerHTML追加模板字符串
+                                                container.innerHTML += `<div id='{self.chat_container[-1]}' style="{self.style_dict['div_' + "LLM"]};">{new_msg_html}</div>`;
+                                            }} else {{
+                                                // 更新已有元素：设置innerHTML（修复赋值语法）
+                                                container_temp.innerHTML += `{new_msg_html}`;
+                                            }}
+                                            // 滚动到底部
+                                            window.scrollTo(0, document.body.scrollHeight)
+                                    }}
+                                    """
+            self.chat_display.page().runJavaScript(js_code)
+                #self.chat_display.page().toHtml(lambda html: print("HTML内容:", html))
+                #self.chat_container.append("content" + str(len(self.chat_container)))
             self.temp_message = ''
 
-        elif self.temp_message!='':
-            if self.flag_em:
-                #print(f"emd_inf:{self.temp_message}")
-                new_msg_html = f"""
-                               <span style="{self.style_dict["message"]}"><strong>{self.temp_message}</strong></span>
-                               """
-            elif self.flag_strong:
-                new_msg_html = f"""
-                               <span style="{self.style_dict["message"]}"><strong>{self.temp_message}</strong></span>
-                               """
-            else:
-                new_msg_html = f"""
-                                <span style="{self.style_dict["message"]}">{self.temp_message}</span>
-                                """
-            print(f"new_meg_html:{new_msg_html}")
-            #self.chat_container.append("content" + str(len(self.chat_container)))
-            js_code = f"""
-                    var container = document.getElementById('content-container');
-                    var container_temp = document.getElementById('{self.chat_container[-1]}');
-                    if (!container) {{
-                        console.error('容器元素未找到！请检查HTML中是否存在id="content-container"的元素');
-                    }} else {{
-                        try {{
-                            if (!container_temp) {{
-                                // 新增元素：使用innerHTML追加模板字符串
-                                container.innerHTML += `<div id='{self.chat_container[-1]}' style="{self.style_dict['div_' + "LLM"]};">{new_msg_html}</div>`;
-                            }} else {{
-                                // 更新已有元素：设置innerHTML（修复赋值语法）
-                                container_temp.innerHTML += `{new_msg_html}`;
-                            }}
-                            // 滚动到底部
-                            window.scrollTo(0, document.body.scrollHeight);
-                            requestAnimationFrame(() => {{
-                                var container_temp = document.getElementById('{self.chat_container[-1]}');
-                                console.log(container_temp ? container_temp.innerHTML : '元素不存在');
-                                if (container_temp) {{ 
-                                    MathJax.typesetPromise([container_temp]).catch(err => console.error('MathJax渲染失败:', err));
-                                }} else {{
-                                    console.error('未找到容器元素:', '{self.chat_container[-1]}');
-                                }}
-                            }});
-                        }} catch (e) {{
-                            console.error('操作失败:', e);
-                        }}
-                    }}
-                    """
-            self.chat_display.page().runJavaScript(js_code)
-            self.temp_message=''
-
-
-
-
-
-    def clear_chat(self):
-        """清空对话"""
-        print(f":self.chat_history:{self.chat_history}")
-        self.chat_history = []
-        self.add_message("系统", "已开始新对话，请输入您的问题...")
-    def on_page_loaded(self, success):
-        """页面加载完成后执行JS收集元素并打印到控制台"""
-        if not success:
-            print("页面加载失败")
-            return
-
-        # 执行JavaScript收集所有带id的元素
-        js_code = """
-            const allElements = document.getElementsByTagName('*');
-            const elementsWithId = [];
-
-            for (let elem of allElements) {
-                if (elem.id) {
-                    elementsWithId.push({
-                        id: elem.id,
-                        tag: elem.tagName.toLowerCase(),
-                        class: elem.className,
-                        content: elem.innerText.substring(0, 50)
-                    });
-                }
-            }
-            elementsWithId;
-        """
-
-        # 执行JS并在控制台打印结果
-        self.chat_display.page().runJavaScript(js_code, self.print_to_console)
-
-    def print_to_console(self, elements):
-        """将元素信息打印到控制台"""
-        if not elements:
-            print("未找到带有id属性的元素")
-            return
-
-        print(f"\n===== 共找到 {len(elements)} 个带id的元素 =====")
-        for i, elem in enumerate(elements, 1):
-            print(f"\n元素 {i}:")
-            print(f"  id: {elem['id']}")
-            print(f"  标签: {elem['tag']}")
-            print(f"  类名: {elem['class'] or '无'}")
-            print(f"  内容: {elem['content'] or '无'}")
-        print("\n======================================")
     def update_display(self,msg_html):
         js_code = f"""
                         var container = document.getElementById('content-container');
@@ -601,10 +606,14 @@ class LLMChatInterface(QMainWindow):
         self.chat_display.page().runJavaScript(js_code)
 
 
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setFont(QFont("SimHei"))
+    from PyQt5.QtWebEngineWidgets import QWebEngineProfile
+
+    default_profile = QWebEngineProfile.defaultProfile()
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
     window = LLMChatInterface()
-    window.show()
     sys.exit(app.exec_())

@@ -1,0 +1,588 @@
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 10:35:30 AM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] An error occurred while writing to file E:/study/S1/taida_cap/优化程序/OBC.aedt.
+Is the file or directory read only? Disk Full?
+Please make sure that the temp directory is set to a local drive. (10:35:52 AM  Nov 02, 2025)
+[warning] An error occurred while writing to file E:/study/S1/taida_cap/????/OBC.aedt.
+Is the file or directory read only? Disk Full?
+Please make sure that the temp directory is set to a local drive. (10:35:53 AM  Nov 02, 2025)
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+-- Message Window --
+      *Global - Messages
+        [warning] Left-alt + shift is currently used by the system to toggle the input language. It is also used in some portions of this application, which may cause the input language to change unexpectedly.
+        [info] GRPC server running on port: 60770. 
+        [info] Project OBC has been opened.
+        [info] Added design 'PFC' of type Maxwell 3D.
+        [info] Aedt Objects correctly read
+        [warning] An error occurred while writing to file E:/study/S1/taida_cap/优化程序/OBC.aedt. Is the file or directory read only? Disk Full? Please make sure that the temp directory is set to a local drive. (10:35:52 AM  Nov 02, 2025)
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 499, in update_and_simulate
+        [error]     modify_parameters(project_path=project_path, design_name=design_name, parameters=core_diameter, maxwell_app=maxwell_app)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 50, in modify_parameters
+        [error]     maxwell_app.save_project()
+        [error] AEDT API Error on save_project
+        [error] Last Electronics Desktop Message - [error] script macro error: an error occured while writing to the file. is it readonly? disk full? (10:35:52 am  nov 02, 2025)  
+        [error] **************************************************************
+        [info] Parsing E:\study\S1\taida_cap\????\OBC.aedt.
+        [info] Dataset PFC doesn't exist.
+        [info] Dataset PFC created successfully.
+        [warning] An error occurred while writing to file E:/study/S1/taida_cap/????/OBC.aedt. Is the file or directory read only? Disk Full? Please make sure that the temp directory is set to a local drive. (10:35:53 AM  Nov 02, 2025)
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 502, in update_and_simulate
+        [error]     modify_dataset(project_path=project_path, design_name=design_name, dataset_name=dataset_name, new_x_values=time_arr, new_y_values=current_arr, maxwell_app=maxwell_app)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 124, in modify_dataset
+        [error]     maxwell_app.save_project()
+        [error] AEDT API Error on save_project
+        [error] Last Electronics Desktop Message - [error] script macro error: an error occured while writing to the file. is it readonly? disk full? (10:35:53 am  nov 02, 2025)  
+        [error] **************************************************************
+        [info] Parsing E:\study\S1\taida_cap\优化程序\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\优化程序\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC has been opened.
+        [info] Added design 'PFC' of type Maxwell 3D.
+        [info] Aedt Objects correctly read
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [info] Parsing E:\study\S1\taida_cap\优化程序\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\优化程序\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Project Project1 has been created.
+        [info] Added design 'PFC' of type Maxwell 3D.
+        [info] Aedt Objects correctly read
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [info] Parsing E:\ansys\Documents\Ansoft\Project1.aedt.
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 510, in update_and_simulate
+        [error]     coreloss_result = extract_coreloss(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 342, in extract_coreloss
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'setup  not available in current design.' on _get_report_object
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:55 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['CoreLoss'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error]     context = {'Objects': []} 
+        [error]     polyline_points = 1001 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 510, in update_and_simulate
+        [error]     coreloss_result = extract_coreloss(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 342, in extract_coreloss
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'bool' object has no attribute 'get_solution_data' on get_solution_data
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:55 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['CoreLoss'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error]     context = {'Objects': []} 
+        [error] **************************************************************
+        [info] Parsing E:\study\S1\taida_cap\优化程序\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\优化程序\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Project Project2 has been created.
+        [info] Added design 'PFC' of type Maxwell 3D.
+        [info] Aedt Objects correctly read
+        [info] Parsing E:\ansys\Documents\Ansoft\Project2.aedt.
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'setup  not available in current design.' on _get_report_object
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['L(P,P)'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error]     polyline_points = 1001 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'bool' object has no attribute 'get_solution_data' on get_solution_data
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['L(P,P)'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'setup  not available in current design.' on _get_report_object
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['L(P, P)'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error]     polyline_points = 1001 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'bool' object has no attribute 'get_solution_data' on get_solution_data
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['L(P, P)'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'setup  not available in current design.' on _get_report_object
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['Inductance'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error]     polyline_points = 1001 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'bool' object has no attribute 'get_solution_data' on get_solution_data
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['Inductance'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'setup  not available in current design.' on _get_report_object
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['L'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error]     polyline_points = 1001 
+        [error] **************************************************************
+        [error] **************************************************************
+        [error]   File "E:\study\S1\taida_cap\主界面.py", line 94, in run
+        [error]     chat_suanfa(self.message,self.mode,self.output)
+        [error]   File "E:\study\S1\taida_cap\大语言模型调用.py", line 451, in chat_suanfa
+        [error]     ansys_validation(print,excitation,core_id,N,core_gap)
+        [error]   File "E:\study\S1\taida_cap\函数调用接口.py", line 50, in ansys_validation
+        [error]     update_and_simulate(print,ansys_files_path,'PFC',"PFC",core_id, core_gap,N, excitation)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 511, in update_and_simulate
+        [error]     inductance_result = extract_inductance(project_path, design_name)
+        [error]   File "E:\study\S1\taida_cap\优化程序\ansys_validation.py", line 427, in extract_inductance
+        [error]     test_data = maxwell_app.post.get_solution_data(
+        [error] 'bool' object has no attribute 'get_solution_data' on get_solution_data
+        [error] Last Electronics Desktop Message - [error] script macro error: cannot perform command because multiple projects are named obc. (10:35:59 am  nov 02, 2025)  
+        [error] Method arguments: 
+        [error]     expressions = ['L'] 
+        [error]     primary_sweep_variable = Time 
+        [error]     report_category = Fields 
+        [error] **************************************************************
+        [warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard. 
+        [warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+      OBC (E:/study/S1/taida_cap/????/)
+        [error] An error occurred while writing to file E:/study/S1/taida_cap/优化程序/OBC.aedt. Is the file or directory read only? Disk Full? Please make sure that the temp directory is set to a local drive. (10:35:52 AM  Nov 02, 2025)
+        PFC (Magnetostatic)
+          [error] Script macro error: An error occured while writing to the file. Is it readonly? Disk full? (10:35:52 AM  Nov 02, 2025)
+          [error] Script macro error: An error occured while writing to the file. Is it readonly? Disk full? (10:35:53 AM  Nov 02, 2025)
+        [error] An error occurred while writing to file E:/study/S1/taida_cap/????/OBC.aedt. Is the file or directory read only? Disk Full? Please make sure that the temp directory is set to a local drive. (10:35:53 AM  Nov 02, 2025)
+      OBC (E:/study/S1/taida_cap/优化程序/)
+        PFC (Magnetostatic)
+          [error] Script macro error: Cannot perform command because multiple projects are named OBC. (10:35:55 AM  Nov 02, 2025)
+      Project1 (E:/ansys/Documents/Ansoft/)
+        PFC (Magnetostatic)
+          [error] Script macro error: Cannot perform command because multiple projects are named OBC. (10:35:59 AM  Nov 02, 2025)
+-- Message Window --
+Stopping Batch Run: 11:14:42 AM  Nov 02, 2025
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 11:15:53 AM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] An error occurred while writing to file E:/study/S1/taida_cap/优化程序/OBC.aedt.
+Is the file or directory read only? Disk Full?
+Please make sure that the temp directory is set to a local drive. (11:16:14 AM  Nov 02, 2025)
+[warning] An error occurred while writing to file E:/study/S1/taida_cap/????/OBC.aedt.
+Is the file or directory read only? Disk Full?
+Please make sure that the temp directory is set to a local drive. (11:16:15 AM  Nov 02, 2025)
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 11:46:37 AM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 11:49:45 AM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 11:53:40 AM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 11:59:26 AM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 12:03:13 PM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 3:31:25 PM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 3:43:06 PM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 3:51:00 PM  Nov 02, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+-- Message Window --
+      *Global - Messages
+        [warning] Left-alt + shift is currently used by the system to toggle the input language. It is also used in some portions of this application, which may cause the input language to change unexpectedly.
+        [info] GRPC server running on port: 61683. 
+        [info] Project OBC has been opened.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] Project OBC Saved correctly
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] aedt file load time 0.0799407958984375
+        [info] Project OBC Saved correctly
+        [error] Error in solving all setups (AnalyzeAll).
+        [info] Design setup None solved correctly in 0.0h 4.0m 16.0s
+        [info] Project OBC Saved correctly
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [info] Solution Data Correctly Loaded.
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [warning] Parameter Objects is not available, check syntax.
+        [info] Solution Data Correctly Loaded.
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [warning] No context provided for Fields. Assigned object: None
+        [info] Solution Data Correctly Loaded.
+-- Message Window --
+Stopping Batch Run: 3:57:34 PM  Nov 02, 2025
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 10:00:05 AM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 10:05:21 AM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+-- Message Window --
+      *Global - Messages
+        [warning] Left-alt + shift is currently used by the system to toggle the input language. It is also used in some portions of this application, which may cause the input language to change unexpectedly.
+        [info] GRPC server running on port: 58848. 
+        [info] Project OBC has been opened.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] Project OBC Saved correctly
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] aedt file load time 0.14358067512512207
+        [info] Project OBC Saved correctly
+        [info] Solving all design setups. Analysis started...
+        [info] Design setup None solved correctly in 0.0h 12.0m 18.0s
+        [info] Project OBC Saved correctly
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 1sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [info] Solution Data Correctly Loaded.
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [warning] Parameter Objects is not available, check syntax.
+        [info] Solution Data Correctly Loaded.
+        [info] Parsing E:\study\S1\taida_cap\OBC.aedt.
+        [info] File E:\study\S1\taida_cap\OBC.aedt correctly loaded. Elapsed time: 0m 0sec
+        [info] Project OBC set to active.
+        [info] Active Design set to PFC
+        [info] Aedt Objects correctly read
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] PostProcessor class has been initialized! Elapsed time: 0m 0sec
+        [info] Post class has been initialized! Elapsed time: 0m 0sec
+        [info] Modeler class has been initialized! Elapsed time: 0m 0sec
+        [warning] No context provided for Fields. Assigned object: None
+        [info] Solution Data Correctly Loaded.
+-- Message Window --
+Stopping Batch Run: 10:19:25 AM  Nov 05, 2025
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 10:45:45 AM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 10:51:41 AM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 11:35:59 AM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 1:36:37 PM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 2:06:13 PM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+
+ 
+Ansys Electronics Desktop Version 2024.2.0, Build: 2024-05-23 02:23:50
+Location: E:\INApps\AnsysEM\v242\Win64\ansysedt.exe
+Non Graphical Mode: No Project??
+Starting Batch Run: 4:49:37 PM  Nov 05, 2025
+Running as user : CHW\chwhcx
+Temp directory: C:\Users\chwhcx\AppData\Local\Temp
+Project directory: E:\ansys\Documents\Ansoft
+[warning] Electronics Desktop cannot be closed right now because it is being used by another application, script or extension wizard.
+

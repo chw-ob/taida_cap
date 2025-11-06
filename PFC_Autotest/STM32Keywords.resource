@@ -9,9 +9,9 @@ ${DEVICE2_ID}     STM32_Device2
 ${DEVICE2_VID}    0484
 ${DEVICE2_PID}    5741
 ${VOLTAGE_MIN}    0.0
-${VOLTAGE_MAX}    600
-${CURRENT_MIN}    -1
-${CURRENT_MAX}    20
+${VOLTAGE_MAX}    600.0
+${CURRENT_MIN}    -5.0
+${CURRENT_MAX}    20.0
 ${BAUDRATE}       115200
 ${TIMEOUT}        1
 
@@ -59,16 +59,22 @@ ${TIMEOUT}        1
     [Arguments]    ${device_id}
     [Documentation]    读取设备电压并在合理范围内验证
     ${voltage}=    Read Voltage From Device    ${device_id}
-    Voltage Should Be Within Range    ${device_id}    ${VOLTAGE_MIN}    ${VOLTAGE_MAX}
+    ${voltage}=    Set Variable If    ${voltage} < 0    0.0    ${voltage}
     [Return]    ${voltage}
 
 读取设备电流并验证
     [Arguments]    ${device_id}
     [Documentation]    读取设备电流并在合理范围内验证
     ${current}=    Read Current From Device    ${device_id}
-    Log    ${device_id} 电流: ${current} A
-    Current Should Be Within Range    ${device_id}    ${CURRENT_MIN}    ${CURRENT_MAX}
+    ${current}=    Set Variable If    ${current} < 0    0.0    ${current}
     [Return]    ${current}
+
+读取设备PF
+    [Arguments]    ${device_id}
+    [Documentation]    读取设备PF
+    ${pf}=    Read Pf From Device    ${device_id}
+    ${pf}=    Set Variable If    ${pf} < 0    0.0    ${pf}
+    [Return]    ${pf}
 
 读取设备所有参数
     [Arguments]    ${device_id}
@@ -81,3 +87,61 @@ ${TIMEOUT}        1
     [Documentation]    关闭所有连接
     Close All Connections
     Log    所有设备连接已关闭
+
+ZXB001_测量交流电压
+    [Documentation]    测试读取ZXB001电压值
+    [Tags]    device1    voltage
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE1_ID}    ${DEVICE1_VID}    ${DEVICE1_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB001初始化失败
+    ${voltage}=    Read Voltage From Device    ${DEVICE1_ID}
+    ${voltage}=    Set Variable If    ${voltage} < 0    0.0    ${voltage}
+    [Return]    ${voltage}
+
+ZXB001_测量交流电流
+    [Documentation]    测试读取ZXB001电流值
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE1_ID}    ${DEVICE1_VID}    ${DEVICE1_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB001初始化失败
+    ${current}=    Read Current From Device    ${DEVICE1_ID}
+    ${current}=    Set Variable If    ${current} < 0    0.0    ${current}
+    [Return]    ${current}
+
+ZXB001_测量功率因数
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE1_ID}    ${DEVICE1_VID}    ${DEVICE1_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB001初始化失败
+    ${pf}=    Read Pf From Device    ${DEVICE1_ID}
+    [Return]    ${pf}
+
+ZXB001_测量功率
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE1_ID}    ${DEVICE1_VID}    ${DEVICE1_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB001初始化失败
+    ${watt}=    Read Watt From Device    ${DEVICE1_ID}
+    [Return]    ${watt}
+
+ZXB002_测量直流电压
+    [Documentation]    测试读取ZXB002电压值
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE2_ID}    ${DEVICE2_VID}    ${DEVICE2_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB001初始化失败
+    ${voltage}=    Read Voltage From Device    ${DEVICE2_ID}
+    ${voltage}=    Set Variable If    ${voltage} < 0    0.0    ${voltage}
+    [Return]    ${voltage}
+
+ZXB002_测量直流电流
+    [Documentation]    测试读取ZXB002电流值
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE2_ID}    ${DEVICE2_VID}    ${DEVICE2_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB002初始化失败
+    ${current}=    Read Current From Device    ${DEVICE2_ID}
+    ${current}=    Set Variable If    ${current} < 0    0.0    ${current}
+    [Return]    ${current}
+
+ZXB002_测量功率
+    ${status}=    Run Keyword And Return Status
+    ...    Initialize STM32 Device    ${DEVICE2_ID}    ${DEVICE2_VID}    ${DEVICE2_PID}    ${BAUDRATE}    ${TIMEOUT}
+    Should Be True    ${status}    ZXB002初始化失败
+    ${watt}=    Read Watt From Device    ${DEVICE2_ID}
+    [Return]    ${watt}

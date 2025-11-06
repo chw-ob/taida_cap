@@ -142,23 +142,15 @@ def read_current(key,print):
 def read_voltage(key,print):
     try:
         # 执行命令并指定编码为 UTF-8
-        result = subprocess.run(
-            ['robot','--test',f'测试读取设备{key}电压',r'E:\study\S1\taida_cap\PFC_Autotest\STM32_Test_Suite.robot'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            encoding='utf-8',  # 显式指定编码
-            errors='replace'  # 遇到无法解码的字符时替换
-        )
-
+        command = ['robot', '--test', f'测试读取设备{key}电压',
+                   r'E:\study\S1\taida_cap\PFC_Autotest\STM32_Test_Suite.robot']
         # 打印标准输出
-        print("命令输出:")
-        print(result.stdout)
-
-        # 如果有错误输出也打印出来
-        if result.stderr:
-            print("\n错误输出:")
-            print(result.stderr)
+        thread = threading.Thread(
+            target=capture_subprocess_realtime,
+            args=(command, print),
+        )
+        thread.start()
+        thread.join()
 
     except Exception as e:
         print(f"执行命令时发生错误: {str(e)}")
